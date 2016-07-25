@@ -1,0 +1,8 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^\data12$
+^\data13$
+^\data14$
+^\data15$
+^\R/profile_data.R
+^\R/kprep_levels.R

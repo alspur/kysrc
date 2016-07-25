@@ -1,0 +1,12 @@
+Package: kysrc
+Type: Package
+Title: Kentucky School Report Card Data from 2012-2015
+Version: 0.0.0.9000
+Author@R: person("Alex", "Spurrier", email = "alex.spurrier@gmail.com",
+    role = c("cre"), "aut")
+Maintainer: Alex Spurrier <alex.spurrier@gmail.com>
+Description: This package contains data from the Kentucky School Report Card
+  website.
+License: CC0
+LazyData: TRUE
+RoxygenNote: 5.0.1
