@@ -166,8 +166,7 @@ race15_pct <- demographics15 %>%
 race_pct <- bind_rows(race12_pct, race13_pct, race14_pct, race15_pct)
 
 # remove unneeded dataframes
-rm(demographics12, demographics13, demographics14, demographics15,
-   race12_pct, race13_pct, race14_pct, race15_pct)
+rm(race12_pct, race13_pct, race14_pct, race15_pct)
 
 # convert to long data & reformat data
 race_pct %<>%
@@ -198,7 +197,79 @@ dist_race_pct <- race_pct %>%
 sch_race_pct <- race_pct %>%
   filter(str_length(sch_id) == 6) # only include id numbers w/ 6 chars
 
-# use race count data for package ####
+# use race pct data for package ####
 use_data(state_race_pct, overwrite = TRUE)
 use_data(dist_race_pct, overwrite = TRUE)
 use_data(sch_race_pct, overwrite = TRUE)
+
+# clean tech data ####
+
+# filter out unneeded columns, rename columns
+teach12 <- demographics12 %>%
+  select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR,
+         STDNT_TCH_RATIO, FULLTIME_TCH_TOTAL, NATIONAL_BOARD_CERT_TCH_CNT,
+         AVG_YRS_TCH_EXP) %>%
+  rename(sch_id = SCH_CD, dist_name = DIST_NAME, sch_name = SCH_NAME,
+         year = SCH_YEAR, s_t_ratio = STDNT_TCH_RATIO, t_fte = FULLTIME_TCH_TOTAL,
+         nbct_count = NATIONAL_BOARD_CERT_TCH_CNT, avg_t_exp = AVG_YRS_TCH_EXP)
+
+teach13 <- demographics13 %>%
+  select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR,
+         STDNT_TCH_RATIO, FTE_TCH_TOTAL, NATIONAL_BOARD_CERT_TCH_CNT,
+         AVG_YRS_TCH_EXP) %>%
+  rename(sch_id = SCH_CD, dist_name = DIST_NAME, sch_name = SCH_NAME,
+         year = SCH_YEAR, s_t_ratio = STDNT_TCH_RATIO, t_fte = FTE_TCH_TOTAL,
+         nbct_count = NATIONAL_BOARD_CERT_TCH_CNT, avg_t_exp = AVG_YRS_TCH_EXP)
+
+teach14 <- demographics14 %>%
+  select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR,
+         STDNT_TCH_RATIO, FTE_TCH_TOTAL, NATIONAL_BOARD_CERT_TCH_CNT,
+         AVG_YRS_TCH_EXP) %>%
+  rename(sch_id = SCH_CD, dist_name = DIST_NAME, sch_name = SCH_NAME,
+         year = SCH_YEAR, s_t_ratio = STDNT_TCH_RATIO, t_fte = FTE_TCH_TOTAL,
+         nbct_count = NATIONAL_BOARD_CERT_TCH_CNT, avg_t_exp = AVG_YRS_TCH_EXP)
+
+teach15 <- demographics15 %>%
+  select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR,
+         STDNT_TCH_RATIO, FTE_TCH_TOTAL, NATIONAL_BOARD_CERT_TCH_CNT,
+         AVG_YRS_TCH_EXP) %>%
+  rename(sch_id = SCH_CD, dist_name = DIST_NAME, sch_name = SCH_NAME,
+         year = SCH_YEAR, s_t_ratio = STDNT_TCH_RATIO, t_fte = FTE_TCH_TOTAL,
+         nbct_count = NATIONAL_BOARD_CERT_TCH_CNT, avg_t_exp = AVG_YRS_TCH_EXP)
+
+# bind teacher data from all years together
+teach <- bind_rows(teach12, teach13, teach14, teach15)
+
+# remove unneeded dataframes
+rm(teach12, teach13, teach14, teach15)
+
+# reformat teacher data
+teach %<>%
+  mutate(year = factor(year, levels = c("20112012", "20122013", "20132014", "20142015"),
+                       labels = c("2011-2012", "2012-2013", "2013-2014", "2014-2015")),
+         s_t_ratio = as.numeric(str_replace_all(s_t_ratio, ":1", "")),
+         t_fte = as.numeric(str_replace_all(t_fte, ",", "")),
+         nbct_count = as.numeric(str_replace_all(nbct_count, ",", "")),
+         nbct_pct = nbct_count / t_fte,
+         avg_t_exp = as.numeric(avg_t_exp)) %>%
+  select(sch_id, dist_name, sch_name, year, s_t_ratio, t_fte, nbct_count,
+         nbct_pct, avg_t_exp)
+
+# select state data
+state_teach <- teach %>%
+  filter(sch_id == 999) %>% # filter for state id number
+  select(-sch_name) %>% # this is redudndant - just reads "state total"
+  mutate(dist_name = "State") # make this label consistent
+
+dist_teach <- teach %>%
+  filter(sch_id != 999) %>% # exclude state id number
+  filter(str_length(sch_id) == 3) %>% # only include id numbers w/ 3 chars
+  select(-sch_name) # remove redundant col - all values are "District Total"
+
+sch_teach <- teach %>%
+  filter(str_length(sch_id) == 6) # only include id numbers w/ 6 chars
+
+# use race pct data for package ####
+use_data(state_teach, overwrite = TRUE)
+use_data(dist_teach, overwrite = TRUE)
+use_data(sch_teach, overwrite = TRUE)
