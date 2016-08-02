@@ -3,7 +3,7 @@
 \docType{data}
 \name{state_race_pct}
 \alias{state_race_pct}
-\title{State Student Race Data for Kentucky Public Schools, 2012-2015}
+\title{State Student Race Percent Data for Kentucky Public Schools, 2012-2015}
 \format{A dataframe with 28 rows and 5 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
@@ -19,7 +19,7 @@
 state_race_pct
 }
 \description{
-A dataset with student racial group data
+A dataset with student racial group percent data
 }
 \keyword{datasets}
 

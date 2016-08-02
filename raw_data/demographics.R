@@ -181,7 +181,7 @@ race_pct %<>%
                                   "Asian","American Indian/Alaska Native",
                                   "Hawaiian/Pacific Islander")),
          pct = as.numeric(str_replace_all(pct, "%", "")) / 100) %>%
-  filter(!is.na(count))
+  filter(!is.na(pct))
 
 # select state data
 state_race_pct <- race_pct %>%
@@ -202,7 +202,7 @@ use_data(state_race_pct, overwrite = TRUE)
 use_data(dist_race_pct, overwrite = TRUE)
 use_data(sch_race_pct, overwrite = TRUE)
 
-# clean tech data ####
+# clean teacher data ####
 
 # filter out unneeded columns, rename columns
 teach12 <- demographics12 %>%
@@ -256,20 +256,143 @@ teach %<>%
          nbct_pct, avg_t_exp)
 
 # select state data
-state_teach <- teach %>%
+state_teach_stats <- teach %>%
   filter(sch_id == 999) %>% # filter for state id number
   select(-sch_name) %>% # this is redudndant - just reads "state total"
   mutate(dist_name = "State") # make this label consistent
 
-dist_teach <- teach %>%
+dist_teach_stats <- teach %>%
   filter(sch_id != 999) %>% # exclude state id number
   filter(str_length(sch_id) == 3) %>% # only include id numbers w/ 3 chars
   select(-sch_name) # remove redundant col - all values are "District Total"
 
-sch_teach <- teach %>%
+sch_teach_stats <- teach %>%
   filter(str_length(sch_id) == 6) # only include id numbers w/ 6 chars
 
-# use race pct data for package ####
-use_data(state_teach, overwrite = TRUE)
-use_data(dist_teach, overwrite = TRUE)
-use_data(sch_teach, overwrite = TRUE)
+# use teacher data for package ####
+use_data(state_teach_stats, overwrite = TRUE)
+use_data(dist_teach_stats, overwrite = TRUE)
+use_data(sch_teach_stats, overwrite = TRUE)
+
+# clean teacher race data ####
+
+# filter out unneeded columns, rename columns
+teach_race14 <- demographics14 %>%
+  select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR,
+         WHITE_FTE_TOTAL, BLACK_FTE_TOTAL, HISPANIC_FTE_TOTAL,
+         ASIAN_FTE_TOTAL, AIAN_FTE_TOTAL, HAWAIIAN_FTE_TOTAL,
+         TWO_OR_MORE_FTE_TOTAL, RACE_FTE_TOTAL) %>%
+  rename(sch_id = SCH_CD, dist_name = DIST_NAME, sch_name = SCH_NAME,
+         year = SCH_YEAR, t_white = WHITE_FTE_TOTAL, t_black = BLACK_FTE_TOTAL,
+         t_hispanic = HISPANIC_FTE_TOTAL, t_asian = ASIAN_FTE_TOTAL,
+         t_aian = AIAN_FTE_TOTAL, t_hawaiian = HAWAIIAN_FTE_TOTAL,
+         t_two_plus = TWO_OR_MORE_FTE_TOTAL, t_total = RACE_FTE_TOTAL)
+
+teach_race15 <- demographics15 %>%
+  select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR,
+         WHITE_FTE_TOTAL, BLACK_FTE_TOTAL, HISPANIC_FTE_TOTAL,
+         ASIAN_FTE_TOTAL, AIAN_FTE_TOTAL, HAWAIIAN_FTE_TOTAL,
+         TWO_OR_MORE_FTE_TOTAL, RACE_FTE_TOTAL) %>%
+  rename(sch_id = SCH_CD, dist_name = DIST_NAME, sch_name = SCH_NAME,
+         year = SCH_YEAR, t_white = WHITE_FTE_TOTAL, t_black = BLACK_FTE_TOTAL,
+         t_hispanic = HISPANIC_FTE_TOTAL, t_asian = ASIAN_FTE_TOTAL,
+         t_aian = AIAN_FTE_TOTAL, t_hawaiian = HAWAIIAN_FTE_TOTAL,
+         t_two_plus = TWO_OR_MORE_FTE_TOTAL, t_total = RACE_FTE_TOTAL) %>%
+  mutate(t_two_plus = as.numeric(t_two_plus))
+
+# bind teacher data from all years together
+teach_race <- bind_rows(teach_race14, teach_race15)
+
+# remove unneeded dataframes
+rm(teach_race14, teach_race15)
+
+# reformat teacher data
+teach_race %<>%
+  mutate(year = factor(year, levels = c("20132014", "20142015"),
+                       labels = c("2013-2014", "2014-2015")),
+         t_white = as.numeric(str_replace_all(t_white, ",", "")),
+         t_black = as.numeric(str_replace_all(t_black, ",", "")),
+         t_hispanic = as.numeric(str_replace_all(t_hispanic, ",", "")),
+         t_asian = as.numeric(str_replace_all(t_asian, ",", "")),
+         t_aian = as.numeric(str_replace_all(t_aian, ",", "")),
+         t_hawaiian = as.numeric(str_replace_all(t_hawaiian, ",", "")),
+         t_total = as.numeric(str_replace_all(t_total, ",", "")),
+         t_white_pct = t_white / t_total,
+         t_black_pct = t_black / t_total,
+         t_hispanic_pct = t_hispanic / t_total,
+         t_asian_pct = t_asian / t_total,
+         t_aian_pct = t_aian / t_total,
+         t_hawaiian_pct = t_hawaiian / t_total,
+         t_two_plus_pct = t_two_plus / t_total)
+
+# create teacher race count data
+teach_race_count <- teach_race %>%
+  select(sch_id, dist_name, sch_name, year, t_white, t_black, t_hispanic,
+         t_asian, t_aian, t_hawaiian, t_two_plus) %>%
+  gather(t_race, count, -sch_id, -dist_name, -sch_name, -year) %>%
+  mutate(t_race = factor(t_race,
+                         levels = c("t_white", "t_black", "t_hispanic",
+                                    "t_asian", "t_aian", "t_hawaiian",
+                                    "t_two_plus"),
+                         labels = c("White","Black", "Hispanic", "Asian",
+                                    "American Indian/Alaska Native",
+                                    "Hawaiian/Pacific Islander",
+                                    "Two or More/Other"))) %>%
+  filter(!is.na(count))
+
+# create teacher race pct data
+teach_race_pct <- teach_race %>%
+  select(sch_id, dist_name, sch_name, year, t_white_pct, t_black_pct,
+         t_hispanic_pct, t_asian_pct, t_aian_pct, t_hawaiian_pct,
+         t_two_plus_pct) %>%
+  gather(t_race, pct, -sch_id, -dist_name, -sch_name, -year) %>%
+  mutate(t_race = factor(t_race,
+                         levels = c("t_white_pct", "t_black_pct",
+                                    "t_hispanic_pct", "t_asian_pct",
+                                    "t_aian_pct", "t_hawaiian_pct",
+                                    "t_two_plus_pct"),
+                         labels = c("White","Black", "Hispanic", "Asian",
+                                    "American Indian/Alaska Native",
+                                    "Hawaiian/Pacific Islander",
+                                    "Two or More/Other"))) %>%
+  filter(!is.na(pct))
+
+# select state count data
+state_teach_race_count <- teach_race_count %>%
+  filter(sch_id == 999) %>% # filter for state id number
+  select(-sch_name) %>% # this is redudndant - just reads "state total"
+  mutate(dist_name = "State") # make this label consistent
+
+# select district count data
+dist_teach_race_count <- teach_race_count %>%
+  filter(sch_id != 999) %>% # exclude state id number
+  filter(str_length(sch_id) == 3) %>% # only include id numbers w/ 3 chars
+  select(-sch_name) # remove redundant col - all values are "District Total"
+
+# select school count data
+sch_teach_race_count <- teach_race_count %>%
+  filter(str_length(sch_id) == 6) # only include id numbers w/ 6 chars
+
+# select state pct data
+state_teach_race_pct <- teach_race_pct %>%
+  filter(sch_id == 999) %>% # filter for state id number
+  select(-sch_name) %>% # this is redudndant - just reads "state total"
+  mutate(dist_name = "State") # make this label consistent
+
+# select district pct data
+dist_teach_race_pct <- teach_race_pct %>%
+  filter(sch_id != 999) %>% # exclude state id number
+  filter(str_length(sch_id) == 3) %>% # only include id numbers w/ 3 chars
+  select(-sch_name) # remove redundant col - all values are "District Total"
+
+# select school pct data
+sch_teach_race_pct <- teach_race_pct %>%
+  filter(str_length(sch_id) == 6) # only include id numbers w/ 6 chars
+
+# use teacher data for package ####
+use_data(state_teach_race_count, overwrite = TRUE)
+use_data(dist_teach_race_count, overwrite = TRUE)
+use_data(sch_teach_race_count, overwrite = TRUE)
+use_data(state_teach_race_pct, overwrite = TRUE)
+use_data(dist_teach_race_pct, overwrite = TRUE)
+use_data(sch_teach_race_pct, overwrite = TRUE)

@@ -2,7 +2,7 @@
 #'
 #' A dataset with teacher data
 #'
-#' @format A dataframe with 28 rows and 5 variables:
+#' @format A dataframe with 4 rows and 8 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name - in this case, it is always "State Total"}
@@ -15,13 +15,13 @@
 #' }
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
-"state_teach"
+"state_teach_stats"
 
-#' District Student Race Data for Kentucky Public Schools, 2012-2015
+#' District Teacher Data for Kentucky Public Schools, 2012-2015
 #'
-#' A dataset with student racial group data
+#' A dataset with teacher data
 #'
-#' @format A dataframe with 28 rows and 5 variables:
+#' @format A dataframe with 705 rows and 8 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -34,13 +34,13 @@
 #' }
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
-"dist_teach"
+"dist_teach_stats"
 
-#' School Student Race Data for Kentucky Public Schools, 2012-2015
+#' School Teacher Data for Kentucky Public Schools, 2012-2015
 #'
-#' A dataset with student racial group data
+#' A dataset with teacher data
 #'
-#' @format A dataframe with 28 rows and 5 variables:
+#' @format A dataframe with 5721 rows and 9 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -54,4 +54,102 @@
 #' }
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
-"sch_teach"
+"sch_teach_stats"
+
+#' State Teacher Race Count Data for Kentucky Public Schools, 2014-2015
+#'
+#' A dataset with teacher race count data
+#'
+#' @format A dataframe with 13 rows and 5 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name - in this case, it is always "State Total"}
+#'   \item{year}{School year}
+#'   \item{t_race}{Teacher racial group}
+#'   \item{count}{Number of teachers}
+#' }
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"state_teach_race_count"
+
+#' District Teacher Race Count Data for Kentucky Public Schools, 2014-2015
+#'
+#' A dataset with teacher race count data
+#'
+#' @format A dataframe with 2249 rows and 5 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name}
+#'   \item{year}{School year}
+#'   \item{t_race}{Teacher racial group}
+#'   \item{count}{Number of teachers}
+#' }
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"dist_teach_race_count"
+
+#' School Teacher Race Count Data for Kentucky Public Schools, 2014-2015
+#'
+#' A dataset with teacher race count data
+#'
+#' @format A dataframe with 17860 rows and 6 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name}
+#'   \item{sch_name}{School name}
+#'   \item{year}{School year}
+#'   \item{t_race}{Teacher racial group}
+#'   \item{count}{Number of teachers}
+#' }
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"sch_teach_race_count"
+
+#' State Teacher Race Percent Data for Kentucky Public Schools, 2014-2015
+#'
+#' A dataset with teacher race percent data
+#'
+#' @format A dataframe with 13 rows and 5 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name - in this case, it is always "State Total"}
+#'   \item{year}{School year}
+#'   \item{t_race}{Teacher racial group}
+#'   \item{pct}{Percent of teachers}
+#' }
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"state_teach_race_pct"
+
+#' District Teacher Race Percent Data for Kentucky Public Schools, 2014-2015
+#'
+#' A dataset with teacher race percent data
+#'
+#' @format A dataframe with 2249 rows and 5 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name}
+#'   \item{year}{School year}
+#'   \item{t_race}{Teacher racial group}
+#'   \item{pct}{Percent of teachers}
+#' }
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"dist_teach_race_pct"
+
+#' School Teacher Race Percent Data for Kentucky Public Schools, 2014-2015
+#'
+#' A dataset with teacher race percent data
+#'
+#' @format A dataframe with 17517 rows and 6 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name}
+#'   \item{sch_name}{School name}
+#'   \item{year}{School year}
+#'   \item{t_race}{Teacher racial group}
+#'   \item{pct}{Percent of teachers}
+#' }
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"sch_teach_race_pct"

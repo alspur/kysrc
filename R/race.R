@@ -1,6 +1,6 @@
-#' State Student Race Data for Kentucky Public Schools, 2012-2015
+#' State Student Race Count Data for Kentucky Public Schools, 2012-2015
 #'
-#' A dataset with student racial group data
+#' A dataset with student racial group count data
 #'
 #' @format A dataframe with 28 rows and 5 variables:
 #' \describe{
@@ -14,11 +14,11 @@
 
 "state_race_count"
 
-#' District Student Race Data for Kentucky Public Schools, 2012-2015
+#' District Student Race Count Data for Kentucky Public Schools, 2012-2015
 #'
-#' A dataset with student racial group data
+#' A dataset with student racial group count data
 #'
-#' @format A dataframe with 28 rows and 5 variables:
+#' @format A dataframe with 4914 rows and 5 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -30,11 +30,11 @@
 
 "dist_race_count"
 
-#' School Student Race Data for Kentucky Public Schools, 2012-2015
+#' School Student Race Count Data for Kentucky Public Schools, 2012-2015
 #'
-#' A dataset with student racial group data
+#' A dataset with student racial group count data
 #'
-#' @format A dataframe with 28 rows and 5 variables:
+#' @format A dataframe with 38017 rows and 6 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -47,9 +47,9 @@
 
 "sch_race_count"
 
-#' State Student Race Data for Kentucky Public Schools, 2012-2015
+#' State Student Race Percent Data for Kentucky Public Schools, 2012-2015
 #'
-#' A dataset with student racial group data
+#' A dataset with student racial group percent data
 #'
 #' @format A dataframe with 28 rows and 5 variables:
 #' \describe{
@@ -63,11 +63,11 @@
 
 "state_race_pct"
 
-#' District Student Race Data for Kentucky Public Schools, 2012-2015
+#' District Student Race Percent Data for Kentucky Public Schools, 2012-2015
 #'
-#' A dataset with student racial group data
+#' A dataset with student racial group percent data
 #'
-#' @format A dataframe with 28 rows and 5 variables:
+#' @format A dataframe with 4935 rows and 5 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -79,11 +79,11 @@
 
 "dist_race_pct"
 
-#' School Student Race Data for Kentucky Public Schools, 2012-2015
+#' School Student Race Percent Data for Kentucky Public Schools, 2012-2015
 #'
-#' A dataset with student racial group data
+#' A dataset with student racial group percent data
 #'
-#' @format A dataframe with 28 rows and 5 variables:
+#' @format A dataframe with 40047 rows and 6 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
