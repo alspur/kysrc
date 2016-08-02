@@ -99,18 +99,13 @@ race_count %<>%
   filter(!is.na(count))
 
 # select state data
-state_race_count <- race_count %>%
-  filter(sch_id == 999) %>% # filter for state id number
-  select(-sch_name) %>% # this is redudndant - just reads "state total"
-  mutate(dist_name = "State") # make this label consistent
+state_race_count <- select_state(race_count)
 
-dist_race_count <- race_count %>%
-  filter(sch_id != 999) %>% # exclude state id number
-  filter(str_length(sch_id) == 3) %>% # only include id numbers w/ 3 chars
-  select(-sch_name) # remove redundant col - all values are "District Total"
+# select district data
+dist_race_count <- select_dist(race_count)
 
-sch_race_count <- race_count %>%
-  filter(str_length(sch_id) == 6) # only include id numbers w/ 6 chars
+# select school data
+sch_race_count <- select_sch(race_count)
 
 # use race count data for package ####
 use_data(state_race_count, overwrite = TRUE)
@@ -186,18 +181,13 @@ race_pct %<>%
   filter(!is.na(pct))
 
 # select state data
-state_race_pct <- race_pct %>%
-  filter(sch_id == 999) %>% # filter for state id number
-  select(-sch_name) %>% # this is redudndant - just reads "state total"
-  mutate(dist_name = "State") # make this label consistent
+state_race_pct <- select_state(race_pct)
 
-dist_race_pct <- race_pct %>%
-  filter(sch_id != 999) %>% # exclude state id number
-  filter(str_length(sch_id) == 3) %>% # only include id numbers w/ 3 chars
-  select(-sch_name) # remove redundant col - all values are "District Total"
+# select district data
+dist_race_pct <- select_dist(race_pct)
 
-sch_race_pct <- race_pct %>%
-  filter(str_length(sch_id) == 6) # only include id numbers w/ 6 chars
+# select school data
+sch_race_pct <- select_sch(race_pct)
 
 # use race pct data for package ####
 use_data(state_race_pct, overwrite = TRUE)
@@ -258,18 +248,13 @@ teach %<>%
          nbct_pct, avg_t_exp)
 
 # select state data
-state_teach_stats <- teach %>%
-  filter(sch_id == 999) %>% # filter for state id number
-  select(-sch_name) %>% # this is redudndant - just reads "state total"
-  mutate(dist_name = "State") # make this label consistent
+state_teach_stats <- select_state(teach)
 
-dist_teach_stats <- teach %>%
-  filter(sch_id != 999) %>% # exclude state id number
-  filter(str_length(sch_id) == 3) %>% # only include id numbers w/ 3 chars
-  select(-sch_name) # remove redundant col - all values are "District Total"
+# select district data
+dist_teach_stats <- select_dist(teach)
 
-sch_teach_stats <- teach %>%
-  filter(str_length(sch_id) == 6) # only include id numbers w/ 6 chars
+# select school data
+sch_teach_stats <- select_sch(teach)
 
 # use teacher data for package ####
 use_data(state_teach_stats, overwrite = TRUE)
@@ -360,36 +345,22 @@ teach_race_pct <- teach_race %>%
   filter(!is.na(pct))
 
 # select state count data
-state_teach_race_count <- teach_race_count %>%
-  filter(sch_id == 999) %>% # filter for state id number
-  select(-sch_name) %>% # this is redudndant - just reads "state total"
-  mutate(dist_name = "State") # make this label consistent
+state_teach_race_count <- select_state(teach_race_count)
 
 # select district count data
-dist_teach_race_count <- teach_race_count %>%
-  filter(sch_id != 999) %>% # exclude state id number
-  filter(str_length(sch_id) == 3) %>% # only include id numbers w/ 3 chars
-  select(-sch_name) # remove redundant col - all values are "District Total"
+dist_teach_race_count <- select_dist(teach_race_count)
 
 # select school count data
-sch_teach_race_count <- teach_race_count %>%
-  filter(str_length(sch_id) == 6) # only include id numbers w/ 6 chars
+sch_teach_race_count <- select_sch(teach_race_count)
 
 # select state pct data
-state_teach_race_pct <- teach_race_pct %>%
-  filter(sch_id == 999) %>% # filter for state id number
-  select(-sch_name) %>% # this is redudndant - just reads "state total"
-  mutate(dist_name = "State") # make this label consistent
+state_teach_race_pct <- select_state(teach_race_pct)
 
 # select district pct data
-dist_teach_race_pct <- teach_race_pct %>%
-  filter(sch_id != 999) %>% # exclude state id number
-  filter(str_length(sch_id) == 3) %>% # only include id numbers w/ 3 chars
-  select(-sch_name) # remove redundant col - all values are "District Total"
+dist_teach_race_pct <- select_dist(teach_race_pct)
 
 # select school pct data
-sch_teach_race_pct <- teach_race_pct %>%
-  filter(str_length(sch_id) == 6) # only include id numbers w/ 6 chars
+sch_teach_race_pct <- select_sch(teach_race_pct)
 
 # use teacher data for package ####
 use_data(state_teach_race_count, overwrite = TRUE)
