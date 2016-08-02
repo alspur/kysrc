@@ -23,6 +23,8 @@ library(tidyr)
 library(magrittr)
 library(stringr)
 
+source("raw_data/select_level.R")
+
 demographics12 <- read_excel("raw_data/data12/LEARNING_ENVIRONMENT_STUDENTS-TEACHERS.xlsx")
 demographics13 <- read_excel("raw_data/data13/LEARNING_ENVIRONMENT_STUDENTS-TEACHERS.xlsx")
 demographics14 <- read_excel("raw_data/data14/LEARNING_ENVIRONMENT_STUDENTS-TEACHERS.xlsx")
@@ -396,3 +398,84 @@ use_data(sch_teach_race_count, overwrite = TRUE)
 use_data(state_teach_race_pct, overwrite = TRUE)
 use_data(dist_teach_race_pct, overwrite = TRUE)
 use_data(sch_teach_race_pct, overwrite = TRUE)
+
+# clean teacher gender data ####
+
+# filter out unneeded columns, rename columns
+teach_gender13 <- demographics13 %>%
+  select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR,
+         MALE_FTE_TOTAL, FEMALE_FTE_TOTAL) %>%
+  rename(sch_id = SCH_CD, dist_name = DIST_NAME, sch_name = SCH_NAME,
+         year = SCH_YEAR, t_male = MALE_FTE_TOTAL, t_female = FEMALE_FTE_TOTAL)
+
+teach_gender14 <- demographics14 %>%
+  select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR,
+         MALE_FTE_TOTAL, FEMALE_FTE_TOTAL) %>%
+  rename(sch_id = SCH_CD, dist_name = DIST_NAME, sch_name = SCH_NAME,
+         year = SCH_YEAR, t_male = MALE_FTE_TOTAL, t_female = FEMALE_FTE_TOTAL)
+
+teach_gender15 <- demographics15 %>%
+  select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR,
+         MALE_FTE_TOTAL, FEMALE_FTE_TOTAL) %>%
+  rename(sch_id = SCH_CD, dist_name = DIST_NAME, sch_name = SCH_NAME,
+         year = SCH_YEAR, t_male = MALE_FTE_TOTAL, t_female = FEMALE_FTE_TOTAL)
+
+# bind teacher data from all years together
+teach_gender <- bind_rows(teach_gender13, teach_gender14, teach_gender15)
+
+# remove unneeded dataframes
+rm(teach_gender13, teach_gender14, teach_gender15)
+
+# reformat teacher data
+teach_gender %<>%
+  mutate(year = factor(year, levels = c("20122013", "20132014", "20142015"),
+                       labels = c("2012-2013", "2013-2014", "2014-2015")),
+         t_male = as.numeric(str_replace_all(t_male, ",", "")),
+         t_female = as.numeric(str_replace_all(t_female, ",", "")),
+         t_total = t_male + t_female,
+         t_male_pct = t_male / t_total,
+         t_female_pct = t_female / t_total)
+
+# create teacher gender count data
+teach_gender_count <- teach_gender %>%
+  select(sch_id, dist_name, sch_name, year, t_male, t_female) %>%
+  gather(t_gender, count, -sch_id, -dist_name, -sch_name, -year) %>%
+  mutate(t_gender = factor(t_gender,
+                           levels = c("t_male", "t_female"),
+                           labels = c("Male", "Female"))) %>%
+  filter(!is.na(count))
+
+# create teacher race pct data
+teach_gender_pct <- teach_gender %>%
+  select(sch_id, dist_name, sch_name, year, t_male_pct, t_female_pct) %>%
+  gather(t_gender, pct, -sch_id, -dist_name, -sch_name, -year) %>%
+  mutate(t_gender = factor(t_gender,
+                           levels = c("t_male_pct", "t_female_pct"),
+                           labels = c("Male", "Female"))) %>%
+  filter(!is.na(pct))
+
+# select state count data
+state_teach_gender_count <- select_state(teach_gender_count)
+
+# select district count data
+dist_teach_gender_count <- select_dist(teach_gender_count)
+
+# select school count data
+sch_teach_gender_count <- select_sch(teach_gender_count)
+
+# select state pct data
+state_teach_gender_pct <- select_state(teach_gender_pct)
+
+# select district pct data
+dist_teach_gender_pct <- select_dist(teach_gender_pct)
+
+# select schpp; pct data
+sch_teach_gender_pct <- select_sch(teach_gender_pct)
+
+# use teacher data for package ####
+use_data(state_teach_gender_count, overwrite = TRUE)
+use_data(dist_teach_gender_count, overwrite = TRUE)
+use_data(sch_teach_gender_count, overwrite = TRUE)
+use_data(state_teach_gender_pct, overwrite = TRUE)
+use_data(dist_teach_gender_pct, overwrite = TRUE)
+use_data(sch_teach_gender_pct, overwrite = TRUE)

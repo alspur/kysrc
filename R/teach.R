@@ -153,3 +153,101 @@
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
 "sch_teach_race_pct"
+
+#' State Teacher Gender Count Data for Kentucky Public Schools, 2014-2015
+#'
+#' A dataset with teacher gender count data
+#'
+#' @format A dataframe with 4 rows and 5 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name - in this case, it is always "State Total"}
+#'   \item{year}{School year}
+#'   \item{t_gender}{Teacher gender}
+#'   \item{count}{Number of teachers}
+#' }
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"state_teach_gender_count"
+
+#' District Teacher Gender Count Data for Kentucky Public Schools, 2013-2015
+#'
+#' A dataset with teacher gender count data
+#'
+#' @format A dataframe with 1040 rows and 5 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name}
+#'   \item{year}{School year}
+#'   \item{t_gender}{Teacher gender}
+#'   \item{count}{Number of teachers}
+#' }
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"dist_teach_gender_count"
+
+#' School Teacher Gender Count Data for Kentucky Public Schools, 2013-2015
+#'
+#' A dataset with teacher gender count data
+#'
+#' @format A dataframe with 8074 rows and 6 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name}
+#'   \item{sch_name}{School name}
+#'   \item{year}{School year}
+#'   \item{t_gender}{Teacher gender}
+#'   \item{count}{Number of teachers}
+#' }
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"sch_teach_gender_count"
+
+#' State Teacher Gender Percent Data for Kentucky Public Schools, 2013-2014
+#'
+#' A dataset with teacher gender percent data
+#'
+#' @format A dataframe with 4 rows and 5 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name - in this case, it is always "State Total"}
+#'   \item{year}{School year}
+#'   \item{t_gender}{Teacher gender}
+#'   \item{pct}{Percent of teachers}
+#' }
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"state_teach_gender_pct"
+
+#' District Teacher Gender Percent Data for Kentucky Public Schools, 2013-2015
+#'
+#' A dataset with teacher gender percent data
+#'
+#' @format A dataframe with 1040 rows and 5 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name}
+#'   \item{year}{School year}
+#'   \item{t_gender}{Teacher gender}
+#'   \item{pct}{Percent of teachers}
+#' }
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"dist_teach_gender_pct"
+
+#' School Teacher Gender Percent Data for Kentucky Public Schools, 2013-2015
+#'
+#' A dataset with teacher gender percent data
+#'
+#' @format A dataframe with 7874 rows and 6 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name}
+#'   \item{sch_name}{School name}
+#'   \item{year}{School year}
+#'   \item{t_gender}{Teacher gender}
+#'   \item{pct}{Percent of teachers}
+#' }
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"sch_teach_gender_pct"
