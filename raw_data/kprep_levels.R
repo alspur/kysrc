@@ -22,10 +22,10 @@ library(stringr)
 library(magrittr)
 
 # load data
-levels12 <- read_excel("data12/ASSESSMENT_KPREP_LEVEL.xlsx")
-levels13 <- read_excel("data13/ASSESSMENT_KPREP_LEVEL.xlsx", sheet = 2)
-levels14 <- read_excel("data14/ASSESSMENT_KPREP_LEVEL.xlsx")
-levels15 <- read_excel("data15/ASSESSMENT_KPREP_LEVEL.xlsx")
+levels12 <- read_excel("raw_data/data12/ASSESSMENT_KPREP_LEVEL.xlsx")
+levels13 <- read_excel("raw_data/data13/ASSESSMENT_KPREP_LEVEL.xlsx", sheet = 2)
+levels14 <- read_excel("raw_data/data14/ASSESSMENT_KPREP_LEVEL.xlsx")
+levels15 <- read_excel("raw_data/data15/ASSESSMENT_KPREP_LEVEL.xlsx")
 
 # clean data ####
 
