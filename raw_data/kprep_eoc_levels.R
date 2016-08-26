@@ -97,3 +97,23 @@ kprep_eoc_levels %<>%
          proficient_pct = as.numeric(proficient_pct) / 100,
          distinguished_pct = as.numeric(distinguished_pct) / 100,
          prof_dist_pct = as.numeric(prof_dist_pct) / 100)
+
+# select state data
+state_eoc_levels <- kprep_eoc_levels %>%
+  filter(sch_id == 999) %>% # filter for state id number
+  select(-sch_name) # remove redundant column - all values are "State Total"
+
+# select district data
+dist_eoc_levels <- kprep_eoc_levels %>%
+  filter(sch_id != 999) %>% # exclude state id number
+  filter(str_length(sch_id) == 3) %>% # only include id numbers w/ 3 chars
+  select(-sch_name) # remove redundant col - all values are "District Total"
+
+# select school data
+sch_eoc_levels <- kprep_eoc_levels %>%
+  filter(str_length(sch_id) == 6) # only include id numbers w/ 6 chars
+
+# use data for package ####
+use_data(sch_eoc_levels, overwrite = TRUE)
+use_data(dist_eoc_levels, overwrite = TRUE)
+use_data(state_eoc_levels, overwrite = TRUE)
