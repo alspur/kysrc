@@ -96,7 +96,7 @@ profile_dist <- prof_data_clean %>%
 
 
 # select school profile data
-profile <- prof_data_clean %>%
+profile_sch <- prof_data_clean %>%
   filter(str_length(sch_id) == 6) %>% # only include id numbers w/ 6 chars
   mutate(long = ifelse(long < 100, long, NA),
          lat = ifelse(lat < 100, lat, NA)) %>%
@@ -109,4 +109,4 @@ profile <- prof_data_clean %>%
 # use data for package ####
 use_data(profile_state, overwrite = TRUE)
 use_data(profile_dist, overwrite = TRUE)
-use_data(profile, overwrite = TRUE)
+use_data(profile_sch, overwrite = TRUE)

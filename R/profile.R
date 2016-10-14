@@ -48,4 +48,4 @@
 #' }
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
-"profile"
+"profile_sch"
