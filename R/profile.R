@@ -13,7 +13,7 @@
 #' }
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
-"state_profile"
+"profile_state"
 
 #' District Profile Data for Kentucky Public Schools, 2012-2015
 #'
@@ -30,7 +30,7 @@
 #' }
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
-"dist_profile"
+"profile_dist"
 
 #' School Profile Data for Kentucky Public Schools, 2012-2015
 #'
@@ -48,4 +48,4 @@
 #' }
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
-"sch_profile"
+"profile"
