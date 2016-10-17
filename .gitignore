@@ -1,8 +1,12 @@
+.gitignore
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+kysrc.Rproj
 raw_data/data12/**
 raw_data/data13/**
 raw_data/data14/**
 raw_data/data15/**
+raw_data/data16/**
+data_quirks.md
