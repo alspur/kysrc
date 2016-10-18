@@ -61,6 +61,13 @@ prof16 <- profile16 %>%
 # bind profile data from all years into one dataframe
 prof_data <- bind_rows(prof12, prof13, prof14, prof15, prof16)
 
+# get coop data
+coop_info <- profile16 %>%
+  select(DIST_NAME, COOP) %>%
+  distinct()
+
+colnames(coop_info) <- tolower(colnames(coop_info))
+
 # remove old dataframes
 rm(profile12, profile13, profile14, profile15, prof12, prof13, prof14, prof15, prof16)
 
@@ -74,14 +81,19 @@ prof_data_clean <- prof_data %>%
                                      "2014-2015", "2015-2016")),
          enroll = as.integer(str_replace_all(enroll, ",","")))
 
+prof_data_coop <- prof_data_clean %>%
+  left_join(coop_info) %>%
+  select(sch_id, dist_name, sch_name, coop, long, lat, year, enroll) %>%
+  mutate(coop = as.factor(coop))
+
 # select state profile data
-profile_state <- prof_data_clean %>%
+profile_state <- prof_data_coop %>%
   filter(sch_id == 999) %>% # filter for state id number
   mutate(dist_name = "State Total") %>% # clean labels
-  select(-sch_name) # remove redundant column - all values are "State Total"
+  select(-sch_name, -coop) # remove redundant columns
 
 # select district profile data
-profile_dist <- prof_data_clean %>%
+profile_dist <- prof_data_coop %>%
   filter(sch_id != 999) %>% # exclude state id number
   filter(str_length(sch_id) == 3) %>% # only include id numbers w/ 3 chars
   select(-sch_name) %>% # remove redundant col - all values are "District Total"
@@ -96,7 +108,7 @@ profile_dist <- prof_data_clean %>%
 
 
 # select school profile data
-profile_sch <- prof_data_clean %>%
+profile_sch <- prof_data_coop %>%
   filter(str_length(sch_id) == 6) %>% # only include id numbers w/ 6 chars
   mutate(long = ifelse(long < 100, long, NA),
          lat = ifelse(lat < 100, lat, NA)) %>%

@@ -4,11 +4,12 @@
 \name{profile_sch}
 \alias{profile_sch}
 \title{School Profile Data for Kentucky Public Schools, 2012-2015}
-\format{A dataframe with 5722 rows and 7 variables:
+\format{A dataframe with 5722 rows and 8 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name}
   \item{sch_name}{School name}
+  \item{coop}{Regional cooperative}
   \item{long}{Longitude}
   \item{lat}{Latitude}
   \item{year}{School year}

@@ -19,10 +19,11 @@
 #'
 #' A dataset with basic location and enrollment data
 #'
-#' @format A dataframe with 704 rows and 6 variables:
+#' @format A dataframe with 704 rows and 8 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
+#'   \item{coop}{Regional cooperative}
 #'   \item{long}{Longitude}
 #'   \item{lat}{Latitude}
 #'   \item{year}{A factor containing the school year}
@@ -36,11 +37,12 @@
 #'
 #' A dataset with basic location and enrollment data
 #'
-#' @format A dataframe with 5722 rows and 7 variables:
+#' @format A dataframe with 5722 rows and 8 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
 #'   \item{sch_name}{School name}
+#'   \item{coop}{Regional cooperative}
 #'   \item{long}{Longitude}
 #'   \item{lat}{Latitude}
 #'   \item{year}{School year}
