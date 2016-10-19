@@ -147,10 +147,10 @@ ach_level_dist <- ach_levels %>%
   select(-sch_name) # remove redundant col - all values are "District Total"
 
 # select school data
-ach_level <- ach_levels %>%
+ach_level_sch <- ach_levels %>%
   filter(str_length(sch_id) == 6) # only include id numbers w/ 6 chars
 
 # use data for package ####
-use_data(ach_level, overwrite = TRUE)
+use_data(ach_level_sch, overwrite = TRUE)
 use_data(ach_level_dist, overwrite = TRUE)
 use_data(ach_level_state, overwrite = TRUE)
