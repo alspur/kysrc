@@ -56,7 +56,7 @@ grad_data <- bind_rows(grad1315_clean, grad16_clean) %>%
                           levels = c("2013", "2014", "2015", "2016"),
                           labels = c("2012-2013", "2013-2014",
                                      "2014-2015", "2015-2016")),
-         grad_rate = char_to_num(grad_rate))
+         grad_rate = char_to_num(grad_rate)/100)
 
 # select state data
 grad_state <- select_state(grad_data)
