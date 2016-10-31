@@ -46,33 +46,44 @@ colnames(ccr16) <- col_lower(ccr16)
 # clean columns
 ccr12_clean <- ccr12 %>%
   select(sch_cd, dist_name, sch_name, sch_year, disagg_label,
-         nbr_graduates_with_diploma, college_ready, pct_ccr_no_bonus) %>%
-  rename(sch_id = sch_cd, year = sch_year, student_group = disagg_label)
+         nbr_graduates_with_diploma, college_ready, career_ready_total,
+         nbr_ccr_regular, pct_ccr_no_bonus) %>%
+  rename(sch_id = sch_cd, year = sch_year, student_group = disagg_label,
+         career_ready = career_ready_total)
 
 ccr13_clean <- ccr13 %>%
   select(sch_cd, dist_name, sch_name, sch_year, disagg_label,
-         nbr_graduates_with_diploma, college_ready, pct_ccr_no_bonus) %>%
-  rename(sch_id = sch_cd, year = sch_year, student_group = disagg_label)
+         nbr_graduates_with_diploma, college_ready, career_ready_total,
+         nbr_ccr_regular, pct_ccr_no_bonus) %>%
+  rename(sch_id = sch_cd, year = sch_year, student_group = disagg_label,
+         career_ready = career_ready_total)
 
 ccr14_clean <- ccr14 %>%
   select(sch_cd, dist_name, sch_name, sch_year, disagg_label,
-         nbr_graduates_with_diploma, college_ready, pct_ccr_no_bonus) %>%
-  rename(sch_id = sch_cd, year = sch_year, student_group = disagg_label)
+         nbr_graduates_with_diploma, college_ready, career_ready_total,
+         nbr_ccr_regular,pct_ccr_no_bonus) %>%
+  rename(sch_id = sch_cd, year = sch_year, student_group = disagg_label,
+         career_ready = career_ready_total)
 
 ccr15_clean <- ccr15 %>%
   select(sch_cd, dist_name, sch_name, sch_year, disagg_label,
-         nbr_graduates_with_diploma, college_ready, pct_ccr_no_bonus) %>%
-  rename(sch_id = sch_cd, year = sch_year, student_group = disagg_label)
+         nbr_graduates_with_diploma, college_ready, career_ready_total,
+         nbr_ccr_regular, pct_ccr_no_bonus) %>%
+  rename(sch_id = sch_cd, year = sch_year, student_group = disagg_label,
+         career_ready = career_ready_total)
 
 ccr16_clean <- ccr16 %>%
   select(sch_cd, dist_name, sch_name, sch_year, disagg_label,
-         nbr_graduates_with_diploma, college_ready, pct_ccr_no_bonus) %>%
-  rename(sch_id = sch_cd, year = sch_year, student_group = disagg_label)
+         nbr_graduates_with_diploma, college_ready, career_ready_total,
+         nbr_ccr_regular, pct_ccr_no_bonus) %>%
+  rename(sch_id = sch_cd, year = sch_year, student_group = disagg_label,
+         career_ready = career_ready_total)
 
 # join data
 ccr_data <- bind_rows(ccr12_clean, ccr13_clean, ccr14_clean,
                       ccr15_clean, ccr16_clean) %>%
   rename(n_grads = nbr_graduates_with_diploma,
+         ccr_total = nbr_ccr_regular,
          ccr_pct = pct_ccr_no_bonus) %>%
   mutate(year = factor(year, levels = c(20112012, 20122013, 20132014,
                                            20142015, 20152016),
@@ -82,9 +93,18 @@ ccr_data <- bind_rows(ccr12_clean, ccr13_clean, ccr14_clean,
          student_group = as.factor(student_group),
          n_grads = char_to_num(n_grads),
          college_ready = char_to_num(college_ready),
+         career_ready = char_to_num(career_ready),
+         ccr_total = char_to_num(ccr_total),
+         college_only = ccr_total - career_ready,
+         career_only = ccr_total - college_ready,
+         both_college_career = college_ready - college_only,
          ccr_pct = as.numeric(ccr_pct) / 100,
-         college_ready_pct = college_ready / n_grads) %>%
-  select(-n_grads, -college_ready)
+         college_only_pct = college_only / n_grads,
+         career_only_pct = career_only / n_grads,
+         both_college_career_pct = both_college_career / n_grads,
+         no_ccr_pct = (n_grads - ccr_total) / n_grads) %>%
+  select(-n_grads, -ccr_total, -college_ready, -career_ready, -college_only,
+         -career_only, -both_college_career)
 
 # select state data
 ccr_state <- select_state(ccr_data)
