@@ -46,13 +46,14 @@ grad1315_clean <- grad1315 %>%
 grad16_clean <- grad16 %>%
   filter(cohort_type == "FOUR YEAR") %>%
   filter(target_label == "Actual Score") %>%
-  select(sch_cd, dist_name, sch_name, disagg_label, cohort_2016) %>%
+  select(sch_cd, dist_name, sch_name, disagg_label, reportyear_2016) %>%
   rename(sch_id = sch_cd, student_group = disagg_label) %>%
   gather(year, grad_rate, -sch_id, -dist_name, -sch_name, -student_group)
 
 # join data
 grad_data <- bind_rows(grad1315_clean, grad16_clean) %>%
-  mutate(year = factor(str_replace_all(year, "cohort_", ""),
+  mutate(year = factor(str_replace_all(str_replace_all(year,
+                                                       "reportyear_",""), "cohort_", ""),
                           levels = c("2013", "2014", "2015", "2016"),
                           labels = c("2012-2013", "2013-2014",
                                      "2014-2015", "2015-2016")),
