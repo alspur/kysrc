@@ -13,16 +13,17 @@
 #' }
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
-"state_profile"
+"profile_state"
 
 #' District Profile Data for Kentucky Public Schools, 2012-2015
 #'
 #' A dataset with basic location and enrollment data
 #'
-#' @format A dataframe with 704 rows and 6 variables:
+#' @format A dataframe with 704 rows and 8 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
+#'   \item{coop}{Regional cooperative}
 #'   \item{long}{Longitude}
 #'   \item{lat}{Latitude}
 #'   \item{year}{A factor containing the school year}
@@ -30,17 +31,18 @@
 #' }
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
-"dist_profile"
+"profile_dist"
 
 #' School Profile Data for Kentucky Public Schools, 2012-2015
 #'
 #' A dataset with basic location and enrollment data
 #'
-#' @format A dataframe with 5722 rows and 7 variables:
+#' @format A dataframe with 5722 rows and 8 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
 #'   \item{sch_name}{School name}
+#'   \item{coop}{Regional cooperative}
 #'   \item{long}{Longitude}
 #'   \item{lat}{Latitude}
 #'   \item{year}{School year}
@@ -48,4 +50,4 @@
 #' }
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
-"sch_profile"
+"profile_sch"
