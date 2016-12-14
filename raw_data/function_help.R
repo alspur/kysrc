@@ -42,3 +42,8 @@ char_to_num <- function(string = ""){
 col_lower <- function(df){
   tolower(colnames(df))
 }
+
+# create function to convert percentages to numbers
+pct_to_num <- function(string = ""){
+  as.numeric(str_replace_all(string, "%", "")) / 100
+}
