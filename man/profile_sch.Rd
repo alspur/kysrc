@@ -13,6 +13,7 @@
   \item{long}{Longitude}
   \item{lat}{Latitude}
   \item{year}{School year}
+  \item{title1}{School's Title 1 status}
   \item{enroll}{Number of students enrolled on October 1 of that school year}
 }}
 \source{
