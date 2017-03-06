@@ -34,41 +34,43 @@ profile16 <- read_excel("raw_data/data16/PROFILE.xlsx")
 
 # filter out unneeded columns
 prof12 <- profile12 %>%
-  select(SCH_CD, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
+  select(SCH_CD, NCES_CD, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
          TITLE1_STATUS, SCH_YEAR, ENROLLMENT) %>%
-  rename(sch_id = SCH_CD, dist_name = DIST_NAME,
+  rename(sch_id = SCH_CD, nces_id = NCES_CD, dist_name = DIST_NAME,
          sch_name = SCH_NAME, long = LONGITUDE,
          lat = LATITUDE, year = SCH_YEAR,
-         title1 = TITLE1_STATUS, enroll = ENROLLMENT)
+         title1 = TITLE1_STATUS, enroll = ENROLLMENT) %>%
+  mutate(nces_id = as.character(nces_id))
 
 prof13 <- profile13 %>%
-  select(SCH_CD, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
+  select(SCH_CD, NCES_CD, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
          TITLE1_STATUS, SCH_YEAR, ENROLLMENT) %>%
-  rename(sch_id = SCH_CD, dist_name = DIST_NAME,
+  rename(sch_id = SCH_CD, nces_id = NCES_CD, dist_name = DIST_NAME,
          sch_name = SCH_NAME, long = LONGITUDE,
          lat = LATITUDE, year = SCH_YEAR,
-         title1 = TITLE1_STATUS, enroll = ENROLLMENT)
+         title1 = TITLE1_STATUS, enroll = ENROLLMENT) %>%
+  mutate(nces_id = as.character(nces_id))
 
 prof14 <- profile14 %>%
-  select(SCH_CD, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
+  select(SCH_CD, NCESID, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
          TITLE1_STATUS, SCH_YEAR, MEMBERSHIP) %>%
-  rename(sch_id = SCH_CD, dist_name = DIST_NAME,
+  rename(sch_id = SCH_CD, nces_id = NCESID, dist_name = DIST_NAME,
          sch_name = SCH_NAME, long = LONGITUDE,
          lat = LATITUDE, year = SCH_YEAR,
          title1 = TITLE1_STATUS, enroll = MEMBERSHIP)
 
 prof15 <- profile15 %>%
-  select(SCH_CD, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
+  select(SCH_CD, NCESID, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
          TITLE1_STATUS, SCH_YEAR, MEMBERSHIP) %>%
-  rename(sch_id = SCH_CD, dist_name = DIST_NAME,
+  rename(sch_id = SCH_CD, nces_id = NCESID, dist_name = DIST_NAME,
          sch_name = SCH_NAME, long = LONGITUDE,
          lat = LATITUDE, year = SCH_YEAR,
          title1 = TITLE1_STATUS, enroll = MEMBERSHIP)
 
 prof16 <- profile16 %>%
-  select(SCH_CD, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
+  select(SCH_CD, NCESID, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
          TITLE1_STATUS, SCH_YEAR, MEMBERSHIP) %>%
-  rename(sch_id = SCH_CD, dist_name = DIST_NAME,
+  rename(sch_id = SCH_CD, nces_id = NCESID, dist_name = DIST_NAME,
          sch_name = SCH_NAME, long = LONGITUDE,
          lat = LATITUDE, year = SCH_YEAR,
          title1 = TITLE1_STATUS, enroll = MEMBERSHIP)
@@ -109,14 +111,15 @@ prof_data_clean <- prof_data %>%
 
 prof_data_coop <- prof_data_clean %>%
   left_join(coop_info) %>%
-  select(sch_id, dist_name, sch_name, coop, long, lat, year, title1, enroll) %>%
+  select(sch_id, nces_id, dist_name, sch_name,
+         coop, long, lat, year, title1, enroll) %>%
   mutate(coop = as.factor(coop))
 
 # select state profile data
 profile_state <- prof_data_coop %>%
   filter(sch_id == 999) %>% # filter for state id number
   mutate(dist_name = "State Total") %>% # clean labels
-  select(-sch_name, -coop, -title1) # remove redundant columns
+  select(-sch_name, -coop, -title1, -nces_id) # remove redundant columns
 
 # select district profile data
 profile_dist <- prof_data_coop %>%
@@ -131,7 +134,7 @@ profile_dist <- prof_data_coop %>%
   ungroup() %>% # beechwood longitude needs to be negative
   mutate(long = ifelse(dist_name == "Beechwood Independent",
                        long * -1, long)) %>%
-  select(-title1)
+  select(-title1, -nces_id)
 
 
 # select school profile data

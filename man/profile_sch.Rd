@@ -7,6 +7,7 @@
 \format{A dataframe with 5722 rows and 8 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
+  \item{nces_id}{NCES school identification number}
   \item{dist_name}{District name}
   \item{sch_name}{School name}
   \item{coop}{Regional cooperative}
