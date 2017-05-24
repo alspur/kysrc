@@ -1,0 +1,14 @@
+---
+title: "Using `kysrc`"
+author: "Alex Spurrier"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+The `kysrc` package is primarily a collection of data from the [Kentucky Department of Education's School Report Card website](https://applications.education.ky.gov/src/). Instead of downloading Excel files for each year and category of school report card data, analysts can simply load the `kysrc` package and start exploring data from the 2011-12 school year to the 2015-16 school year. 
+
+
