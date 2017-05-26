@@ -23,4 +23,3 @@ race_dist
 A dataset with student racial group count data
 }
 \keyword{datasets}
-

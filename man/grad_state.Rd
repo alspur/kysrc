@@ -22,4 +22,3 @@ grad_state
 A dataset with graduation rate data
 }
 \keyword{datasets}
-

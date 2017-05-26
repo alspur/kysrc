@@ -26,4 +26,3 @@ ccr_state
 A dataset with college/career ready data
 }
 \keyword{datasets}
-

@@ -27,4 +27,3 @@ ccr_sch
 A dataset with college/career ready data
 }
 \keyword{datasets}
-

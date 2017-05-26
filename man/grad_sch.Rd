@@ -23,4 +23,3 @@ grad_sch
 A dataset with graduation rate data
 }
 \keyword{datasets}
-

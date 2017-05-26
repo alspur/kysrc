@@ -22,4 +22,3 @@ grad_dist
 A dataset with graduation rate data
 }
 \keyword{datasets}
-

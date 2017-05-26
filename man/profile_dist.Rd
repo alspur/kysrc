@@ -24,4 +24,3 @@ profile_dist
 A dataset with basic location and enrollment data
 }
 \keyword{datasets}
-

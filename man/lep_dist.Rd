@@ -3,6 +3,7 @@
 \docType{data}
 \name{lep_dist}
 \alias{lep_dist}
+\alias{lep_dist}
 \title{Limited English Proficiency Data for Kentucky Public Schools, 2013-2016}
 \format{A dataframe with 8,895 rows and 6 variables:
 \describe{
@@ -29,4 +30,3 @@ A dataset with data on Limited English Proficiency
 A dataset with data on students with Individualized Educaitonal Plans
 }
 \keyword{datasets}
-

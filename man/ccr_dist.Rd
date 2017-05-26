@@ -26,4 +26,3 @@ ccr_dist
 A dataset with college/career ready data
 }
 \keyword{datasets}
-
