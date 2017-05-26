@@ -1,7 +1,7 @@
 Package: kysrc
 Type: Package
 Title: Kentucky School Report Card Data from 2012-2016
-Version: 0.0.0.9003
+Version: 0.0.0.9004
 Author: Alex Spurrier
 Maintainer: Alex Spurrier <alex.spurrier@gmail.com>
 Description: This package contains data from the Kentucky School Report Card
@@ -12,5 +12,7 @@ RoxygenNote: 6.0.1
 Depends:
     R (>= 2.10)
 Suggests: knitr,
-    rmarkdown
+    rmarkdown,
+    tidyverse,
+    scales
 VignetteBuilder: knitr

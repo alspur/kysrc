@@ -114,7 +114,7 @@ profile16 &lt;-<span class="st"> </span>profile_sch %&gt;%<span class="st"> </sp
 <span class="st">  </span><span class="kw">filter</span>(year ==<span class="st"> &quot;2015-2016&quot;</span>) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">select</span>(sch_id, enroll)
 
-<span class="co"># join data</span>
+<span class="co"># join and plot data</span>
 grad16 %&gt;%
 <span class="st">  </span><span class="kw">left_join</span>(frpl16, <span class="dt">by =</span> <span class="st">&quot;sch_id&quot;</span>) %&gt;%
 <span class="st">  </span><span class="kw">left_join</span>(profile16, <span class="dt">by =</span> <span class="st">&quot;sch_id&quot;</span>) %&gt;%

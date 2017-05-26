@@ -64,7 +64,7 @@ profile16 <- profile_sch %>%
   filter(year == "2015-2016") %>% 
   select(sch_id, enroll)
 
-# join data
+# join and plot data
 grad16 %>%
   left_join(frpl16, by = "sch_id") %>%
   left_join(profile16, by = "sch_id") %>%
