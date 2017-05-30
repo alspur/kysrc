@@ -20,6 +20,6 @@ This is a data package that will be rarely updated. The `raw_data` folder only c
 ## Reverse dependencies
 
 * I have run R CMD check on the 5 downstream dependencies.
-  (Summary at https://github.com/alspu/kysrc/tree/master/revdep).
+  (Summary at https://github.com/alspur/kysrc/tree/master/revdep).
 
 * All passed with no errors or warnings.
