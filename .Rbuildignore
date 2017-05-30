@@ -1,5 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\raw_data$
+^\.travis\.yml$
 data_quirks.md
-
+package_stats.R

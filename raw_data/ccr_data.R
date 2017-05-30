@@ -95,16 +95,9 @@ ccr_data <- bind_rows(ccr12_clean, ccr13_clean, ccr14_clean,
          college_ready = char_to_num(college_ready),
          career_ready = char_to_num(career_ready),
          ccr_total = char_to_num(ccr_total),
-         college_only = ccr_total - career_ready,
-         career_only = ccr_total - college_ready,
-         both_college_career = college_ready - college_only,
-         ccr_pct = as.numeric(ccr_pct) / 100,
-         college_only_pct = college_only / n_grads,
-         career_only_pct = career_only / n_grads,
-         both_college_career_pct = both_college_career / n_grads,
-         no_ccr_pct = (n_grads - ccr_total) / n_grads) %>%
-  select(-n_grads, -ccr_total, -college_ready, -career_ready, -college_only,
-         -career_only, -both_college_career)
+         college_ready_pct = college_ready / n_grads,
+         career_ready_pct = career_ready / n_grads,
+         ccr_pct = as.numeric(ccr_pct) / 100)
 
 # select state data
 ccr_state <- select_state(ccr_data)
