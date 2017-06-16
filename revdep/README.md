@@ -10,13 +10,13 @@
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/New_York             |
-|date     |2017-05-30                   |
+|date     |2017-06-16                   |
 
 ## Packages
 
-|package |*  |version    |date       |source                  |
-|:-------|:--|:----------|:----------|:-----------------------|
-|kysrc   |   |0.0.0.9005 |2017-05-30 |local (alspur/kysrc@NA) |
+|package |*  |version |date       |source                  |
+|:-------|:--|:-------|:----------|:-----------------------|
+|kysrc   |*  |0.1.0   |2017-06-16 |local (alspur/kysrc@NA) |
 
 # Check results
 

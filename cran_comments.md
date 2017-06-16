@@ -1,4 +1,5 @@
 ## Test environments
+
 * local OS X install, R 3.3.2
 * ubuntu 12.04 (on travis-ci), R 3.3.2
 * win-builder (devel and release)
@@ -19,7 +20,7 @@ This is a data package that will be rarely updated. The `raw_data` folder only c
 
 ## Reverse dependencies
 
-* I have run R CMD check on the 5 downstream dependencies.
+* I have run R CMD check on the downstream dependencies.
   (Summary at https://github.com/alspur/kysrc/tree/master/revdep).
 
 * All passed with no errors or warnings.

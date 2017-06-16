@@ -15,9 +15,9 @@ install_github("alspur/kysrc")
 
 ### What's inside
 
-This package contains nine different kinds of datasets with data at three different levels: state, district, and school. To reference a table for a particular level, the sufficx will need to be `state`, `dist`, or `sch`, respectively. For example, `ach_grade_state` would provide summary data for the entire state of Kentucky, while `ach_grade_sch` would provide the same data for each public school in Kentucky.
+This package contains nine different kinds of datasets with data at three different levels: state, district, and school. To reference a table for a particular level, you will need to append the suffix `state`, `dist`, or `sch`, respectively. For example, `ach_grade_state` would provide summary data for the entire state of Kentucky, while `ach_grade_sch` would provide the same data for each public school in Kentucky.
 
-The datasets included in this pacage are:
+The datasets included in this package are:
 
 - `ach_grade_...`: K-PREP test data by grade level (3-8, HS).
 - `ach_level_...`: K-PREP test data by school level (Elementary School, Middle School, High School).

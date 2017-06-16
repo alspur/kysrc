@@ -10,3 +10,4 @@ raw_data/data14/**
 raw_data/data15/**
 raw_data/data16/**
 data_quirks.md
+/revdep/.cache.rds
