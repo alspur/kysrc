@@ -28,6 +28,6 @@ lep_sch
 \description{
 A dataset with data on Limited English Proficiency
 
-A dataset with data on students with Individualized Educaitonal Plans
+A dataset with data on students with Individualized Educational Plans
 }
 \keyword{datasets}

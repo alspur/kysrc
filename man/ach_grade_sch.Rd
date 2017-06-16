@@ -19,7 +19,7 @@
   \item{proficient_pct}{Percent of students scoring "Proficient" on KPREP}
   \item{distinguished_pct}{Percent of students scoring "Distinguished" on KPREP}
   \item{prof_dist_pct}{Percent of students scoring "Proficient" or "Distinguished" on KPREP}
-  \item{bonus_pct}{Percent difference bewteen "Distinguished" and "Novice" if the "Novice" rate is lower.}
+  \item{bonus_pct}{Percent difference between "Distinguished" and "Novice" if the "Novice" rate is lower.}
   \item{napd_calc}{Aggregation of score granting .5 points per student at "Apprentice", 1 point per student at/above "Proficient" and .5 points for the value of the "Bonus" amount.}
 }}
 \source{

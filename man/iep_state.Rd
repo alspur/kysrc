@@ -27,6 +27,6 @@ iep_state
 \description{
 A dataset with state-level data on students with Individualized Education Plans (IEP)
 
-A dataset with data on students with Individualized Educaitonal Plans
+A dataset with data on students with Individualized Educational Plans
 }
 \keyword{datasets}

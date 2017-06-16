@@ -55,7 +55,7 @@
 
 #' Data on students with IEP's in Kentucky Public Schools, 2013-2016
 #'
-#' A dataset with data on students with Individualized Educaitonal Plans
+#' A dataset with data on students with Individualized Educational Plans
 #'
 #' @format A dataframe with 96 rows and 6 variables:
 #' \describe{
@@ -73,7 +73,7 @@
 
 #' Data on students with IEP's in Kentucky Public Schools, 2013-2016
 #'
-#' A dataset with data on students with Individualized Educaitonal Plans
+#' A dataset with data on students with Individualized Educational Plans
 #'
 #' @format A dataframe with 16,824 rows and 6 variables:
 #' \describe{
@@ -91,7 +91,7 @@
 
 #' Data on students with IEP's in Kentucky Public Schools, 2013-2016
 #'
-#' A dataset with data on students with Individualized Educaitonal Plans
+#' A dataset with data on students with Individualized Educational Plans
 #'
 #' @format A dataframe with 129,480 rows and 7 variables:
 #' \describe{
