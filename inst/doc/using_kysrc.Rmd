@@ -22,10 +22,10 @@ library(scales)
 
 profile_sch %>%
   filter(year == "2015-2016") %>%
-  ggplot(aes(x = enroll))+
-  geom_histogram(binwidth = 200)+
-  labs(x = "Enrollment", y = "# of KY Public Schools")+
-  ggtitle("Kentucky Public School Enrollment, 2015-16")+
+  ggplot(aes(x = enroll)) +
+  geom_histogram(binwidth = 200) +
+  labs(x = "Enrollment", y = "# of KY Public Schools") +
+  ggtitle("Kentucky Public School Enrollment, 2015-16") +
   theme_minimal()
 
 ```
@@ -37,10 +37,11 @@ Examining variables over time is very easy with `kysrc`. In the example below, t
 
 ccr_state %>%
   filter(student_group == "All Students") %>%
-  ggplot(aes(x = year, y = ccr_pct, group = sch_id))+
-  geom_line()+
-  labs(x = "School Year", y = "College & Career Readiness Rate")+
-  ggtitle("College & Career Readiness in Kentukcy, 2011-12 to 2015-16")+
+  ggplot(aes(x = year, y = ccr_pct, group = sch_id)) +
+  geom_line() +
+  labs(x = "School Year", y = "College & Career Readiness Rate") +
+  ggtitle("College & Career Readiness in Kentucky, 2011-12 to 2015-16") +
+  scale_y_continuous(labels = percent) +
   theme_minimal()
 
 ```
@@ -68,14 +69,14 @@ profile16 <- profile_sch %>%
 grad16 %>%
   left_join(frpl16, by = "sch_id") %>%
   left_join(profile16, by = "sch_id") %>%
-  ggplot(aes(x = frpl_pct, y = grad_rate, size = enroll))+
-  geom_point(alpha = .5)+
-  scale_size_area(max_size = 10)+
-  scale_x_continuous(label = percent)+
-  scale_y_continuous(label = percent)+
+  ggplot(aes(x = frpl_pct, y = grad_rate, size = enroll)) +
+  geom_point(alpha = .5) +
+  scale_size_area(max_size = 10) +
+  scale_x_continuous(label = percent) +
+  scale_y_continuous(label = percent) +
   labs(x = "School FRPL Rate", y = "4-Year Cohort Graduation Rate",
        size = "Enrollment")+
-  ggtitle("School FRPL Rates vs. 4-Year Cohort Graduation Rates, 2015-16")+
+  ggtitle("School FRPL Rates vs. 4-Year Cohort Graduation Rates, 2015-16") +
   theme_minimal()
 
 ```
