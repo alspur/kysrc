@@ -10,7 +10,10 @@ library(kysrc)
 
 #create vector of dataset names
 
-table_names <- list(ach_grade_state,
+table_names <- list(acctbly_state,
+                    acctbly_dist,
+                    acctbly_sch,
+                    ach_grade_state,
                     ach_grade_dist,
                     ach_grade_sch,
                     ach_level_state,
@@ -42,7 +45,10 @@ table_names <- list(ach_grade_state,
                     race_sch
 )
 
-table_names_chr <- c("ach_grade_state",
+table_names_chr <- c("acctbly_state",
+                     "acctbly_dist",
+                     "acctbly_sch",
+                     "ach_grade_state",
                      "ach_grade_dist",
                      "ach_grade_sch",
                      "ach_level_state",
