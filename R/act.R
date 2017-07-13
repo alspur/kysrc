@@ -1,0 +1,75 @@
+#' State ACT Data for Kentucky Public Schools, 2012-2016
+#'
+#' A dataset with ACT data
+#'
+#' @format A dataframe with 74 rows and 13 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name - in this case, it is always "State Total"}
+#'   \item{year}{School year}
+#'   \item{student_group}{Student subgroup}
+#'   \item{act_n_tested}{Number of students taking the ACT}
+#'   \item{act_comp_mean}{Mean ACT composite score}
+#'   \item{act_eng_mean}{Mean ACT English score}
+#'   \item{act_math_mean}{Mean ACT Math score}
+#'   \item{act_read_mean}{Mean ACT Reading score}
+#'   \item{act_science_mean}{Mean ACT Science score}
+#'   \item{act_eng_bench_pct}{Percent meeting ACT benchmark in English (18)}
+#'   \item{act_math_bench_pct}{Percent meeting ACT benchmark in Math (19)}
+#'   \item{act_read_bench_pct}{Percent meeting ACT benchmark in Reading (20)}
+#' }
+#'
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"act_state"
+
+#' District ACT Data for Kentucky Public Schools, 2012-2016
+#'
+#' A dataset with ACT data
+#'
+#' @format A dataframe with 12,971 rows and 13 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name}
+#'   \item{year}{School year}
+#'   \item{student_group}{Student subgroup}
+#'   \item{act_n_tested}{Number of students taking the ACT}
+#'   \item{act_comp_mean}{Mean ACT composite score}
+#'   \item{act_eng_mean}{Mean ACT English score}
+#'   \item{act_math_mean}{Mean ACT Math score}
+#'   \item{act_read_mean}{Mean ACT Reading score}
+#'   \item{act_science_mean}{Mean ACT Science score}
+#'   \item{act_eng_bench_pct}{Percent meeting ACT benchmark in English (18)}
+#'   \item{act_math_bench_pct}{Percent meeting ACT benchmark in Math (19)}
+#'   \item{act_read_bench_pct}{Percent meeting ACT benchmark in Reading (20)}
+#' }
+#'
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"act_dist"
+
+#' School ACT Data for Kentucky Public Schools, 2012-2016
+#'
+#' A dataset with ACT data
+#'
+#' @format A dataframe with 22,570 rows and 14 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name}
+#'   \item{sch_name}{School name}
+#'   \item{year}{School year}
+#'   \item{student_group}{Student subgroup}
+#'   \item{act_n_tested}{Number of students taking the ACT}
+#'   \item{act_comp_mean}{Mean ACT composite score}
+#'   \item{act_eng_mean}{Mean ACT English score}
+#'   \item{act_math_mean}{Mean ACT Math score}
+#'   \item{act_read_mean}{Mean ACT Reading score}
+#'   \item{act_science_mean}{Mean ACT Science score}
+#'   \item{act_eng_bench_pct}{Percent meeting ACT benchmark in English (18)}
+#'   \item{act_math_bench_pct}{Percent meeting ACT benchmark in Math (19)}
+#'   \item{act_read_bench_pct}{Percent meeting ACT benchmark in Reading (20)}
+#' }
+#'
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"act_sch"
