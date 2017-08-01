@@ -53,7 +53,10 @@ table_names <- list(acctbly_state,
                     seek_state,
                     seek_dist,
                     tax_state,
-                    tax_dist
+                    tax_dist,
+                    teach_state,
+                    teach_dist,
+                    teach_sch
 )
 
 table_names_chr <- c("acctbly_state",
@@ -99,7 +102,10 @@ table_names_chr <- c("acctbly_state",
                      "seek_state",
                      "seek_dist",
                      "tax_state",
-                     "tax_dist"
+                     "tax_dist",
+                     "teach_state",
+                     "teach_dist",
+                     "teach_sch"
 )
 
 get_length <- function(df){

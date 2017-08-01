@@ -2,6 +2,7 @@
 
 - Add data from the Finance tab.
 - Add AP test data from the Assessment tab.
+- Add teacher data from the Learning Environment tab.
 
 ## kysrc 0.1.1
 

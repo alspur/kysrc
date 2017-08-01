@@ -35,7 +35,8 @@ The datasets included in this package are:
 - `rev_exp_...`: Revenue and expenditure data (district & state only).
 - `seek_...`: SEEK funding data (district & state only).
 - `tax_...`: Tax data (district & state only).
+- `teach_...`: Teacher data.
 
 Each dataset includes a unique identifier for the school/district/state, `sch_id`. This variable is helpful for joining data from multiple tables, as is `year`, which indicates the school year during which the data was generated.
 
-There are currently 2,932,331 rows of data in this package and a total of 39,972,182 data points.
+There are currently 2,940,377 rows of data in this package and a total of 40,172,445 data points.
