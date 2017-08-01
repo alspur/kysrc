@@ -23,6 +23,7 @@ The datasets included in this package are:
 - `ach_grade_...`: K-PREP test data by grade level (3-8, HS).
 - `ach_level_...`: K-PREP test data by school level (Elementary School, Middle School, High School).
 - `act_...`: ACT test data.
+- `ap_...`: AP test data.
 - `ccr_...`: College/Career Readiness data.
 - `fin_summary_...`: Financial summary data (district & state only).
 - `frpl_...`: Free/Reduced Price Lunch Eligibility data.
@@ -37,4 +38,4 @@ The datasets included in this package are:
 
 Each dataset includes a unique identifier for the school/district/state, `sch_id`. This variable is helpful for joining data from multiple tables, as is `year`, which indicates the school year during which the data was generated.
 
-There are currently 2,902,397 rows of data in this package and a total of 39,681,845 data points.
+There are currently 2,932,331 rows of data in this package and a total of 39,972,182 data points.
