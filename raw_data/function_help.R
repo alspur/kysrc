@@ -34,7 +34,10 @@ select_sch <- function(df){
 
 # create function to convert chars to nums, handling "," in 1000+ numbers
 char_to_num <- function(string = ""){
-  as.numeric(str_replace_all(string, ",", ""))
+
+  strip_dollar <- str_replace_all(string, "\\$", "")
+
+  as.numeric(str_replace_all(strip_dollar, ",", ""))
 }
 
 # convert all colnames to lower

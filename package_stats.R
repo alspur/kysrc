@@ -25,6 +25,8 @@ table_names <- list(acctbly_state,
                     ccr_state,
                     ccr_dist,
                     ccr_sch,
+                    fin_summary_state,
+                    fin_summary_dist,
                     frpl_state,
                     frpl_dist,
                     frpl_sch,
@@ -42,7 +44,13 @@ table_names <- list(acctbly_state,
                     profile_sch,
                     race_state,
                     race_dist,
-                    race_sch
+                    race_sch,
+                    rev_exp_state,
+                    rev_exp_dist,
+                    seek_state,
+                    seek_dist,
+                    tax_state,
+                    tax_dist
 )
 
 table_names_chr <- c("acctbly_state",
@@ -60,6 +68,8 @@ table_names_chr <- c("acctbly_state",
                      "ccr_state",
                      "ccr_dist",
                      "ccr_sch",
+                     "fin_summary_state",
+                     "fin_summary_dist",
                      "frpl_state",
                      "frpl_dist",
                      "frpl_sch",
@@ -77,7 +87,13 @@ table_names_chr <- c("acctbly_state",
                      "profile_sch",
                      "race_state",
                      "race_dist",
-                     "race_sch"
+                     "race_sch",
+                     "rev_exp_state",
+                     "rev_exp_dist",
+                     "seek_state",
+                     "seek_dist",
+                     "tax_state",
+                     "tax_dist"
 )
 
 get_length <- function(df){
