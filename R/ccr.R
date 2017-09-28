@@ -1,8 +1,8 @@
-#' State College/Career Readiness Data for Kentucky Public Schools, 2012-2016
+#' State College/Career Readiness Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with college/career ready data
 #'
-#' @format A dataframe with 85 rows and 11 variables:
+#' @format A dataframe with 103 rows and 11 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name - in this case, it is always "State Total"}
@@ -20,11 +20,11 @@
 
 "ccr_state"
 
-#' District College/Career Readiness Data for Kentucky Public Schools, 2012-2016
+#' District College/Career Readiness Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with college/career ready data
 #'
-#' @format A dataframe with 14773 rows and 11 variables:
+#' @format A dataframe with 17,959 rows and 11 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -42,11 +42,11 @@
 
 "ccr_dist"
 
-#' School College/Career Readiness Data for Kentucky Public Schools, 2012-2016
+#' School College/Career Readiness Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with college/career ready data
 #'
-#' @format A dataframe with 19448 rows and 12 variables:
+#' @format A dataframe with 23,552 rows and 12 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}

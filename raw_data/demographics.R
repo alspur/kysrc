@@ -10,7 +10,8 @@
 # this script is included in .Rbuildignore along with all of
 # the assocaited excel files.
 #
-# data obtained on 2016-07-22 from:
+# 11-12 thru 15-16 data obtained on 2016-10-13 and
+# 16-17 data obtained on 2017-09-28 from:
 # https://applications.education.ky.gov/src/
 
 # load data ####
@@ -37,6 +38,7 @@ demographics13 <- read_excel("raw_data/data13/LEARNING_ENVIRONMENT_STUDENTS-TEAC
 demographics14 <- read_excel("raw_data/data14/LEARNING_ENVIRONMENT_STUDENTS-TEACHERS.xlsx")
 demographics15 <- read_excel("raw_data/data15/LEARNING_ENVIRONMENT_STUDENTS-TEACHERS.xlsx")
 demographics16 <- read_excel("raw_data/data16/LEARNING_ENVIRONMENT_STUDENTS-TEACHERS.xlsx")
+demographics17 <- read_excel("raw_data/data17/LEARNING_ENVIRONMENT_STUDENTS-TEACHERS.xlsx")
 
 
 # clean race count data ####
@@ -73,7 +75,8 @@ race14_count <- demographics14 %>%
          year = SCH_YEAR,  White = MEMBERSHIP_WHITE_CNT,
          Black = MEMBERSHIP_BLACK_CNT, Hispanic = MEMBERSHIP_HISPANIC_CNT,
          Asian = MEMBERSHIP_ASIAN_CNT, AIAN = MEMBERSHIP_AIAN_CNT,
-         Hawaiian = MEMBERSHIP_HAWAIIAN_CNT, TwoPlus = MEMBERSHIP_TWO_OR_MORE_CNT)
+         Hawaiian = MEMBERSHIP_HAWAIIAN_CNT,
+         TwoPlus = MEMBERSHIP_TWO_OR_MORE_CNT)
 
 race15_count <- demographics15 %>%
   select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR,
@@ -84,7 +87,8 @@ race15_count <- demographics15 %>%
          year = SCH_YEAR,  White = MEMBERSHIP_WHITE_CNT,
          Black = MEMBERSHIP_BLACK_CNT, Hispanic = MEMBERSHIP_HISPANIC_CNT,
          Asian = MEMBERSHIP_ASIAN_CNT, AIAN = MEMBERSHIP_AIAN_CNT,
-         Hawaiian = MEMBERSHIP_HAWAIIAN_CNT, TwoPlus = MEMBERSHIP_TWO_OR_MORE_CNT)
+         Hawaiian = MEMBERSHIP_HAWAIIAN_CNT,
+         TwoPlus = MEMBERSHIP_TWO_OR_MORE_CNT)
 
 race16_count <- demographics16 %>%
   select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR,
@@ -95,24 +99,48 @@ race16_count <- demographics16 %>%
          year = SCH_YEAR,  White = MEMBERSHIP_WHITE_CNT,
          Black = MEMBERSHIP_BLACK_CNT, Hispanic = MEMBERSHIP_HISPANIC_CNT,
          Asian = MEMBERSHIP_ASIAN_CNT, AIAN = MEMBERSHIP_AIAN_CNT,
-         Hawaiian = MEMBERSHIP_HAWAIIAN_CNT, TwoPlus = MEMBERSHIP_TWO_OR_MORE_CNT)
+         Hawaiian = MEMBERSHIP_HAWAIIAN_CNT,
+         TwoPlus = MEMBERSHIP_TWO_OR_MORE_CNT)
+
+race17_count <- demographics17 %>%
+  filter(GRADE != "Grade 14") %>%
+  select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR,
+         WHITE_TOTAL, BLACK_TOTAL, HISPANIC_TOTAL,
+         ASIAN_TOTAL, AIAN_TOTAL, HAWAIIAN_TOTAL,
+         TWO_OR_MORE_RACE_TOTAL) %>%
+  rename(sch_id = SCH_CD, dist_name = DIST_NAME, sch_name = SCH_NAME,
+         year = SCH_YEAR,  White = WHITE_TOTAL,
+         Black = BLACK_TOTAL, Hispanic = HISPANIC_TOTAL,
+         Asian = ASIAN_TOTAL, AIAN = AIAN_TOTAL,
+         Hawaiian = HAWAIIAN_TOTAL,
+         TwoPlus = TWO_OR_MORE_RACE_TOTAL)  %>%
+  group_by(sch_id, dist_name, sch_name, year) %>%
+  summarise(White = as.character(sum(White, na.rm = TRUE)),
+            Black = as.character(sum(Black, na.rm = TRUE)),
+            Hispanic = as.character(sum(Hispanic, na.rm = TRUE)),
+            Asian = as.character(sum(Asian, na.rm = TRUE)),
+            AIAN = as.character(sum(AIAN, na.rm = TRUE)),
+            Hawaiian = as.character(sum(Hawaiian, na.rm = TRUE)),
+            TwoPlus = as.character(sum(TwoPlus, na.rm = TRUE)))
 
 # bind race count data from all years together
 # convert to long format
 # mutate columns
 race_count <- bind_rows(race12_count, race13_count, race14_count,
-                        race15_count, race16_count) %>%
+                        race15_count, race16_count, race17_count) %>%
   gather(race, s_count, -sch_id, -dist_name, -sch_name, -year) %>%
   # combine TwoPlus and Other - term changed in 2014, convert to factor
   mutate(s_count = char_to_num(s_count),
          year = factor(year, levels = c("20112012", "20122013", "20132014",
-                                        "20142015", "20152016"),
+                                        "20142015", "20152016", "20162017"),
                        labels = c("2011-2012", "2012-2013", "2013-2014",
-                                  "2014-2015", "2015-2016")),
+                                  "2014-2015", "2015-2016", "2016-2017")),
          race = factor(str_replace_all(race, "Other", "TwoPlus"),
-                       levels = c("White", "Black", "Hispanic", "TwoPlus", "Asian",
+                       levels = c("White", "Black", "Hispanic",
+                                  "TwoPlus", "Asian",
                                   "AIAN", "Hawaiian"),
-                       labels = c("White","Black", "Hispanic", "Two or More/Other",
+                       labels = c("White","Black", "Hispanic",
+                                  "Two or More/Other",
                                   "Asian","American Indian/Alaska Native",
                                   "Hawaiian/Pacific Islander"))) %>%
   filter(!is.na(s_count)) %>%
@@ -122,7 +150,7 @@ race_count <- bind_rows(race12_count, race13_count, race14_count,
 
 # remove unneeded dataframes
 rm(race12_count, race13_count, race14_count,
-   race15_count, race16_count)
+   race15_count, race16_count, race17_count)
 
 # select state, dist, and sch level race data ####
 
