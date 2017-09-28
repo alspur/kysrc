@@ -10,7 +10,8 @@
 # this script is included in .Rbuildignore along with all of
 # the assocaited excel files.
 #
-# data obtained on 2016-07-22 from:
+# 11-12 thru 15-16 data obtained on 2016-10-13 and
+# 16-17 data obtained on 2017-09-28 from:
 # https://applications.education.ky.gov/src/
 
 # load data ####
@@ -29,6 +30,7 @@ profile13 <- read_excel("raw_data/data13/PROFILE.xlsx", sheet = 2)
 profile14 <- read_excel("raw_data/data14/PROFILE.xlsx")
 profile15 <- read_excel("raw_data/data15/PROFILE.xlsx")
 profile16 <- read_excel("raw_data/data16/PROFILE.xlsx")
+profile17 <- read_excel("raw_data/data17/PROFILE.xlsx")
 
 # clean data ####
 
@@ -75,8 +77,16 @@ prof16 <- profile16 %>%
          lat = LATITUDE, year = SCH_YEAR,
          title1 = TITLE1_STATUS, enroll = MEMBERSHIP)
 
+prof17 <- profile17 %>%
+  select(SCH_CD, NCESID, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
+         TITLE1_STATUS, SCH_YEAR, MEMBERSHIP) %>%
+  rename(sch_id = SCH_CD, nces_id = NCESID, dist_name = DIST_NAME,
+         sch_name = SCH_NAME, long = LONGITUDE,
+         lat = LATITUDE, year = SCH_YEAR,
+         title1 = TITLE1_STATUS, enroll = MEMBERSHIP)
+
 # bind profile data from all years into one dataframe
-prof_data <- bind_rows(prof12, prof13, prof14, prof15, prof16)
+prof_data <- bind_rows(prof12, prof13, prof14, prof15, prof16, prof17)
 
 # get coop data
 coop_info <- profile16 %>%
@@ -86,17 +96,17 @@ coop_info <- profile16 %>%
 colnames(coop_info) <- tolower(colnames(coop_info))
 
 # remove old dataframes
-rm(profile12, profile13, profile14, profile15, profile16,
-   prof12, prof13, prof14, prof15, prof16)
+rm(profile12, profile13, profile14, profile15, profile16, profile17,
+   prof12, prof13, prof14, prof15, prof16, prof17)
 
 # clean data formatting
 prof_data_clean <- prof_data %>%
   mutate(long = as.numeric(str_trim(long)),
          lat = as.numeric(str_trim(lat)),
          year = factor(year, levels = c("20112012", "20122013", "20132014",
-                                        "20142015", "20152016"),
+                                        "20142015", "20152016", "20162017"),
                           labels = c("2011-2012", "2012-2013", "2013-2014",
-                                     "2014-2015", "2015-2016")),
+                                     "2014-2015", "2015-2016", "2016-2017")),
          enroll = as.integer(str_replace_all(enroll, ",",""))) %>%
   mutate(type = ifelse(str_detect(title1, "No Program"),
                        "Title 1 eligible, no program",
@@ -131,9 +141,7 @@ profile_dist <- prof_data_coop %>%
   group_by(sch_id) %>%
   mutate(long = min(long, na.rm = TRUE), # impute lat and long for
          lat = min(lat, na.rm = TRUE)) %>% # years w/ missing data
-  ungroup() %>% # beechwood longitude needs to be negative
-  mutate(long = ifelse(dist_name == "Beechwood Independent",
-                       long * -1, long)) %>%
+  ungroup() %>%
   select(-title1, -nces_id)
 
 
@@ -146,6 +154,8 @@ profile_sch <- prof_data_coop %>%
   mutate(long = min(long, na.rm = TRUE), # impute lat and long for
          lat = min(lat, na.rm = TRUE)) %>% # years w/ missing data
   ungroup() %>%
+  mutate(lat = ifelse(sch_name == "Bullitt County Area Technology Center",
+                       38, lat)) %>%
   arrange(sch_id)
 
 # use data for package ####
