@@ -10,7 +10,7 @@
 # this script is included in .Rbuildignore along with all of
 # the assocaited excel files.
 #
-# data obtained on 2016-07-22 from:
+# 11-12 thru 15-16 data obtained on 2016-07-22 from:
 # https://applications.education.ky.gov/src/
 
 # load data ####
@@ -32,7 +32,6 @@ acctbly13 <- read_excel("raw_data/data13/ACCOUNTABILITY_PROFILE.xlsx", sheet = 2
 acctbly14 <- read_excel("raw_data/data14/ACCOUNTABILITY_PROFILE.xlsx")
 acctbly15 <- read_excel("raw_data/data15/ACCOUNTABILITY_PROFILE.xlsx")
 acctbly16 <- read_excel("raw_data/data16/ACCOUNTABILITY_PROFILE.xlsx")
-
 
 # clean data ####
 

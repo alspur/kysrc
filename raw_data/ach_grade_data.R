@@ -8,7 +8,8 @@
 # this script is included in .Rbuildignore along with all of
 # the assocaited excel files.
 #
-# data obtained on 2016-10-13 from:
+# 11-12 thru 15-16 data obtained on 2016-10-13 and
+# 16-17 data obtained on 2017-09-28 from:
 # https://applications.education.ky.gov/src/
 
 # load data ####
@@ -27,6 +28,7 @@ grade13 <- read_excel("raw_data/data13/ACCOUNTABILITY_ACHIEVEMENT_GRADE.xlsx")
 grade14 <- read_excel("raw_data/data14/ACCOUNTABILITY_ACHIEVEMENT_GRADE.xlsx")
 grade15 <- read_excel("raw_data/data15/ACCOUNTABILITY_ACHIEVEMENT_GRADE.xlsx")
 grade16 <- read_excel("raw_data/data16/ACCOUNTABILITY_ACHIEVEMENT_GRADE.xlsx")
+grade16 <- read_excel("raw_data/data17/ACCOUNTABILITY_ACHIEVEMENT_GRADE.xlsx")
 
 source("raw_data/function_help.R")
 
@@ -38,6 +40,8 @@ colnames(grade13) <- col_lower(grade13)
 colnames(grade14) <- col_lower(grade14)
 colnames(grade15) <- col_lower(grade15)
 colnames(grade16) <- col_lower(grade16)
+colnames(grade17) <- col_lower(grade17)
+
 
 # filter out unneeded columns, rename columns
 grade12_clean <- grade12 %>%
