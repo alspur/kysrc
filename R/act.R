@@ -1,8 +1,8 @@
-#' State ACT Data for Kentucky Public Schools, 2012-2016
+#' State ACT Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with ACT data
 #'
-#' @format A dataframe with 74 rows and 13 variables:
+#' @format A dataframe with 90 rows and 13 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name - in this case, it is always "State Total"}
@@ -23,11 +23,11 @@
 
 "act_state"
 
-#' District ACT Data for Kentucky Public Schools, 2012-2016
+#' District ACT Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with ACT data
 #'
-#' @format A dataframe with 12,971 rows and 13 variables:
+#' @format A dataframe with 15,851 rows and 13 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -48,11 +48,11 @@
 
 "act_dist"
 
-#' School ACT Data for Kentucky Public Schools, 2012-2016
+#' School ACT Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with ACT data
 #'
-#' @format A dataframe with 22,570 rows and 14 variables:
+#' @format A dataframe with 27,978 rows and 14 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
