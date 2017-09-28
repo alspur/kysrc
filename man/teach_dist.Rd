@@ -3,8 +3,8 @@
 \docType{data}
 \name{teach_dist}
 \alias{teach_dist}
-\title{District Teacher Data for Kentucky Public Schools, 2012-2015}
-\format{A dataframe with 4 rows and 6 variables:
+\title{District Teacher Data for Kentucky Public Schools, 2012-2017}
+\format{A dataframe with 1,059 rows and 24 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name}

@@ -3,8 +3,8 @@
 \docType{data}
 \name{act_state}
 \alias{act_state}
-\title{State ACT Data for Kentucky Public Schools, 2012-2016}
-\format{A dataframe with 74 rows and 13 variables:
+\title{State ACT Data for Kentucky Public Schools, 2012-2017}
+\format{A dataframe with 90 rows and 13 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name - in this case, it is always "State Total"}

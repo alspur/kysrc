@@ -3,8 +3,8 @@
 \docType{data}
 \name{profile_dist}
 \alias{profile_dist}
-\title{District Profile Data for Kentucky Public Schools, 2012-2015}
-\format{A dataframe with 704 rows and 8 variables:
+\title{District Profile Data for Kentucky Public Schools, 2012-2017}
+\format{A dataframe with 1,058 rows and 7 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name}
