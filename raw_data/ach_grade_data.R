@@ -28,7 +28,7 @@ grade13 <- read_excel("raw_data/data13/ACCOUNTABILITY_ACHIEVEMENT_GRADE.xlsx")
 grade14 <- read_excel("raw_data/data14/ACCOUNTABILITY_ACHIEVEMENT_GRADE.xlsx")
 grade15 <- read_excel("raw_data/data15/ACCOUNTABILITY_ACHIEVEMENT_GRADE.xlsx")
 grade16 <- read_excel("raw_data/data16/ACCOUNTABILITY_ACHIEVEMENT_GRADE.xlsx")
-grade16 <- read_excel("raw_data/data17/ACCOUNTABILITY_ACHIEVEMENT_GRADE.xlsx")
+grade17 <- read_excel("raw_data/data17/ACCOUNTABILITY_ACHIEVEMENT_GRADE.xlsx")
 
 source("raw_data/function_help.R")
 
@@ -75,11 +75,19 @@ grade16_clean <- grade16 %>%
          pct_bonus, napd_calculation) %>%
   mutate(sch_year = as.character(sch_year))
 
+grade17_clean <- grade17 %>%
+  select(sch_cd, dist_name, sch_name, sch_year, grade_level, content_type,
+         disagg_label, nbr_tested, pct_novice, pct_apprentice, pct_proficient,
+         pct_distinguished, pct_proficient_distinguished,
+         pct_bonus, napd_calculation) %>%
+  mutate(sch_year = as.character(sch_year))
+
 # bind kprep grade data from all years into one dataframe
 ach_grade <- bind_rows(grade12_clean, grade13_clean,
                         grade14_clean, grade15_clean,
-                        grade16_clean) %>%
-  rename(sch_id = sch_cd, year = sch_year, grade = grade_level, subject = content_type,
+                        grade16_clean, grade17_clean) %>%
+  rename(sch_id = sch_cd, year = sch_year,
+         grade = grade_level, subject = content_type,
          student_group = disagg_label, n_tested = nbr_tested,
          novice_pct = pct_novice, apprentice_pct = pct_apprentice,
          proficient_pct = pct_proficient, distinguished_pct = pct_distinguished,
@@ -87,10 +95,10 @@ ach_grade <- bind_rows(grade12_clean, grade13_clean,
          bonus_pct = pct_bonus, napd_calc = napd_calculation) %>%
   mutate(year = factor(year, levels = c("20112012", "20122013",
                                         "20132014", "20142015",
-                                        "20152016"),
+                                        "20152016", "20162017"),
                        labels = c("2011-2012", "2012-2013",
                                   "2013-2014", "2014-2015",
-                                  "2015-2016")),
+                                  "2015-2016", "2016-2017")),
          grade = factor(grade,
                           levels = c("03", "04", "05", "06", "07", "08",
                                    "09", "10", "11", "EO"),
