@@ -4,11 +4,11 @@ library(kysrc)
 library(scales)
 
 profile_sch %>%
-  filter(year == "2015-2016") %>%
+  filter(year == "2016-2017") %>%
   ggplot(aes(x = enroll)) +
   geom_histogram(binwidth = 200) +
   labs(x = "Enrollment", y = "# of KY Public Schools") +
-  ggtitle("Kentucky Public School Enrollment, 2015-16") +
+  ggtitle("Kentucky Public School Enrollment, 2016-17") +
   theme_minimal()
 
 
@@ -19,25 +19,25 @@ ccr_state %>%
   ggplot(aes(x = year, y = ccr_pct, group = sch_id)) +
   geom_line() +
   labs(x = "School Year", y = "College & Career Readiness Rate") +
-  ggtitle("College & Career Readiness in Kentucky, 2011-12 to 2015-16") +
+  ggtitle("College & Career Readiness in Kentucky, 2011-12 to 2016-17") +
   scale_y_continuous(labels = percent) +
   theme_minimal()
 
 
 ## ----grad_frpl, fig.width=7, warning=FALSE, message=FALSE----------------
 
-# get data from 2015-16 school year
+# get data from 2016-17 school year
 grad16 <- grad_sch %>% 
-  filter(year == "2015-2016",
+  filter(year == "2016-2017",
          student_group == "All Students") %>%
   select(sch_id, grad_rate)
 
 frpl16 <- frpl_sch %>% 
-  filter(year == "2015-2016") %>%
+  filter(year == "2016-2017") %>%
   select(sch_id, frpl_pct)
   
 profile16 <- profile_sch %>% 
-  filter(year == "2015-2016") %>% 
+  filter(year == "2016-2017") %>% 
   select(sch_id, enroll)
 
 # join and plot data
@@ -51,7 +51,7 @@ grad16 %>%
   scale_y_continuous(label = percent) +
   labs(x = "School FRPL Rate", y = "4-Year Cohort Graduation Rate",
        size = "Enrollment")+
-  ggtitle("School FRPL Rates vs. 4-Year Cohort Graduation Rates, 2015-16") +
+  ggtitle("School FRPL Rates vs. 4-Year Cohort Graduation Rates, 2016-17") +
   theme_minimal()
 
 
