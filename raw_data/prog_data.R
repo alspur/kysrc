@@ -19,7 +19,8 @@
 # this script is included in .Rbuildignore along with all of
 # the assocaited excel files.
 
-# data obtained on 2016-10-13 from:
+# 12-13 thru 15-16 data obtained on 2016-10-13 and
+# 16-17 data obtained on 2017-09-28 from:
 # https://applications.education.ky.gov/src/
 
 # load data ####
@@ -32,23 +33,33 @@ library(tidyr)
 library(stringr)
 library(magrittr)
 
-
-
 # load helper functions
 source("raw_data/function_help.R")
 
 
 # read lep data
-lep13 <- read_excel("raw_data/data13/LEARNING_ENVIRONMENT_PROGRAMS.xlsx", sheet = 1)
-lep14 <- read_excel("raw_data/data14/LEARNING_ENVIRONMENT_PROGRAMS.xlsx", sheet = 1)
-lep15 <- read_excel("raw_data/data15/LEARNING_ENVIRONMENT_PROGRAMS.xlsx", sheet = 1)
-lep16 <- read_excel("raw_data/data16/LEARNING_ENVIRONMENT_PROGRAMS.xlsx", sheet = 1)
+lep13 <- read_excel("raw_data/data13/LEARNING_ENVIRONMENT_PROGRAMS.xlsx",
+                    sheet = 1)
+lep14 <- read_excel("raw_data/data14/LEARNING_ENVIRONMENT_PROGRAMS.xlsx",
+                    sheet = 1)
+lep15 <- read_excel("raw_data/data15/LEARNING_ENVIRONMENT_PROGRAMS.xlsx",
+                    sheet = 1)
+lep16 <- read_excel("raw_data/data16/LEARNING_ENVIRONMENT_PROGRAMS.xlsx",
+                    sheet = 1)
+lep17 <- read_excel("raw_data/data17/LEARNING_ENVIRONMENT_PROGRAMS.xlsx",
+                    sheet = 1)
 
 # read iep data
-iep13 <- read_excel("raw_data/data13/LEARNING_ENVIRONMENT_PROGRAMS.xlsx", sheet = 3)
-iep14 <- read_excel("raw_data/data14/LEARNING_ENVIRONMENT_PROGRAMS.xlsx", sheet = 3)
-iep15 <- read_excel("raw_data/data15/LEARNING_ENVIRONMENT_PROGRAMS.xlsx", sheet = 3)
-iep16 <- read_excel("raw_data/data16/LEARNING_ENVIRONMENT_PROGRAMS.xlsx", sheet = 5)
+iep13 <- read_excel("raw_data/data13/LEARNING_ENVIRONMENT_PROGRAMS.xlsx",
+                    sheet = 3)
+iep14 <- read_excel("raw_data/data14/LEARNING_ENVIRONMENT_PROGRAMS.xlsx",
+                    sheet = 3)
+iep15 <- read_excel("raw_data/data15/LEARNING_ENVIRONMENT_PROGRAMS.xlsx",
+                    sheet = 3)
+iep16 <- read_excel("raw_data/data16/LEARNING_ENVIRONMENT_PROGRAMS.xlsx",
+                    sheet = 5)
+#iep17 <- read_excel("raw_data/data17/LEARNING_ENVIRONMENT_PROGRAMS.xlsx",
+#                   sheet = 5)
 
 
 
@@ -60,6 +71,7 @@ colnames(lep13)[9] <- "total_pct"
 colnames(lep14) <- col_lower(lep14)
 colnames(lep15) <- col_lower(lep15)
 colnames(lep16) <- col_lower(lep16)
+colnames(lep17) <- col_lower(lep17)
 
 colnames(iep13) <- col_lower(iep13)
 colnames(iep13)[9] <- "total_pct"
@@ -97,6 +109,13 @@ lep16_clean <- lep16 %>%
          student_group = disagg_label, lep_total = total_cnt,
          lep_pct = total_pct)
 
+lep17_clean <- lep17 %>%
+  select(sch_cd, dist_name, sch_name, sch_year, disagg_label,
+         total_cnt, total_pct) %>%
+  rename(sch_id = sch_cd, year = sch_year,
+         student_group = disagg_label, lep_total = total_cnt,
+         lep_pct = total_pct)
+
 iep13_clean <- iep13 %>%
   select(sch_cd, dist_name, sch_name, sch_year, disagg_label,
          total_cnt, total_pct) %>%
@@ -127,12 +146,13 @@ iep16_clean <- iep16 %>%
          iep_pct = total_pct)
 
 # join data
-lep_data <- bind_rows(lep13_clean, lep14_clean, lep15_clean, lep16_clean) %>%
+lep_data <- bind_rows(lep13_clean, lep14_clean, lep15_clean,
+                      lep16_clean, lep17_clean) %>%
   mutate(year = factor(year, levels = c(20112012, 20122013, 20132014,
-                                        20142015, 20152016),
+                                        20142015, 20152016, 20162017),
                        labels = c("2011-2012", "2012-2013",
                                   "2013-2014", "2014-2015",
-                                  "2015-2016")),
+                                  "2015-2016", "2016-2017")),
          student_group = as.factor(student_group),
          lep_total = char_to_num(lep_total),
          lep_pct = pct_to_num(lep_pct))

@@ -1,8 +1,8 @@
-#' Limited English Proficiency Data for Kentucky Public Schools, 2013-2016
+#' Limited English Proficiency Data for Kentucky Public Schools, 2013-2017
 #'
 #' A dataset with data on Limited English Proficiency
 #'
-#' @format A dataframe with 60 rows and 6 variables:
+#' @format A dataframe with 75 rows and 6 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name - in this case, it is always "State"}
@@ -16,11 +16,11 @@
 
 "lep_state"
 
-#' Limited English Proficiency Data for Kentucky Public Schools, 2013-2016
+#' Limited English Proficiency Data for Kentucky Public Schools, 2013-2017
 #'
 #' A dataset with data on Limited English Proficiency
 #'
-#' @format A dataframe with 8,895 rows and 6 variables:
+#' @format A dataframe with 11,115 rows and 6 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -34,11 +34,11 @@
 
 "lep_dist"
 
-#' Limited English Proficiency Data for Kentucky Public Schools, 2013-2016
+#' Limited English Proficiency Data for Kentucky Public Schools, 2013-2017
 #'
 #' A dataset with data on Limited English Proficiency
 #'
-#' @format A dataframe with 57,915 rows and 7 variables:
+#' @format A dataframe with 72,720 rows and 7 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -53,7 +53,7 @@
 
 "lep_sch"
 
-#' Data on students with IEP's in Kentucky Public Schools, 2013-2016
+#' Data on students with IEP's in Kentucky Public Schools, 2013-2017
 #'
 #' A dataset with data on students with Individualized Educational Plans
 #'
@@ -71,7 +71,7 @@
 
 "iep_state"
 
-#' Data on students with IEP's in Kentucky Public Schools, 2013-2016
+#' Data on students with IEP's in Kentucky Public Schools, 2013-2017
 #'
 #' A dataset with data on students with Individualized Educational Plans
 #'
@@ -89,7 +89,7 @@
 
 "lep_dist"
 
-#' Data on students with IEP's in Kentucky Public Schools, 2013-2016
+#' Data on students with IEP's in Kentucky Public Schools, 2013-2017
 #'
 #' A dataset with data on students with Individualized Educational Plans
 #'
