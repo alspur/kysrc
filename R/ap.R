@@ -1,8 +1,8 @@
-#' State AP Data for Kentucky Public Schools, 2013-2016
+#' State AP Data for Kentucky Public Schools, 2013-2017
 #'
 #' A dataset with AP data
 #'
-#' @format A dataframe with 60 rows and 9 variables:
+#' @format A dataframe with 75 rows and 9 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name - in this case, it is always "State Total"}
@@ -19,11 +19,11 @@
 
 "ap_state"
 
-#' District AP Data for Kentucky Public Schools, 2013-2016
+#' District AP Data for Kentucky Public Schools, 2013-2017
 #'
 #' A dataset with AP data
 #'
-#' @format A dataframe with 8,943 rows and 9 variables:
+#' @format A dataframe with 10,250 rows and 9 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -40,11 +40,11 @@
 
 "ap_dist"
 
-#' School AP Data for Kentucky Public Schools, 2013-2016
+#' School AP Data for Kentucky Public Schools, 2013-2017
 #'
 #' A dataset with AP data
 #'
-#' @format A dataframe with 20,931 rows and 10 variables:
+#' @format A dataframe with 22,896 rows and 10 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}

@@ -2,7 +2,7 @@
 
 [![Travis-CI Build Status](https://travis-ci.org/alspur/kysrc.svg?branch=master)](https://travis-ci.org/alspur/kysrc)
 
-This package contains Kentucky public school data for 2012-2016 from the [Kentucky School Report Card website](https://applications.education.ky.gov/src/DataSets.aspx). 
+This package contains Kentucky public school data for 2012-2017 from the [Kentucky School Report Card website](https://applications.education.ky.gov/src/DataSets.aspx). 
 
 ### Installation
 
@@ -39,4 +39,4 @@ The datasets included in this package are:
 
 Each dataset includes a unique identifier for the school/district/state, `sch_id`. This variable is helpful for joining data from multiple tables, as is `year`, which indicates the school year during which the data was generated.
 
-There are currently 2,940,377 rows of data in this package and a total of 40,172,445 data points.
+There are currently 2,941,990 rows of data in this package and a total of 40,212,592 data points.

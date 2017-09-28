@@ -10,7 +10,8 @@
 # this script is included in .Rbuildignore along with all of
 # the assocaited excel files.
 #
-# data obtained on 2016-10-13 from:
+# 11-12 thru 15-16 data obtained on 2016-10-13 and
+# 16-17 data obtained on 2017-09-28 from:
 # https://applications.education.ky.gov/src/
 
 # load data ####
@@ -32,7 +33,7 @@ ccr13 <- read_excel("raw_data/data13/ACCOUNTABILITY_CCR_HIGHSCHOOL.xlsx", sheet 
 ccr14 <- read_excel("raw_data/data14/ACCOUNTABILITY_CCR_HIGHSCHOOL.xlsx")
 ccr15 <- read_excel("raw_data/data15/ACCOUNTABILITY_CCR_HIGHSCHOOL.xlsx")
 ccr16 <- read_excel("raw_data/data16/ACCOUNTABILITY_CCR_HIGHSCHOOL.xlsx")
-
+ccr17 <- read_excel("raw_data/data17/ACCOUNTABILITY_CCR_HIGHSCHOOL.xlsx")
 
 # clean data ####
 
@@ -42,6 +43,7 @@ colnames(ccr13) <- col_lower(ccr13)
 colnames(ccr14) <- col_lower(ccr14)
 colnames(ccr15) <- col_lower(ccr15)
 colnames(ccr16) <- col_lower(ccr16)
+colnames(ccr17) <- col_lower(ccr17)
 
 # clean columns
 ccr12_clean <- ccr12 %>%
@@ -79,17 +81,24 @@ ccr16_clean <- ccr16 %>%
   rename(sch_id = sch_cd, year = sch_year, student_group = disagg_label,
          career_ready = career_ready_total)
 
+ccr17_clean <- ccr17 %>%
+  select(sch_cd, dist_name, sch_name, sch_year, disagg_label,
+         nbr_graduates_with_diploma, college_ready, career_ready_total,
+         nbr_ccr_regular, pct_ccr_no_bonus) %>%
+  rename(sch_id = sch_cd, year = sch_year, student_group = disagg_label,
+         career_ready = career_ready_total)
+
 # join data
 ccr_data <- bind_rows(ccr12_clean, ccr13_clean, ccr14_clean,
-                      ccr15_clean, ccr16_clean) %>%
+                      ccr15_clean, ccr16_clean, ccr17_clean) %>%
   rename(n_grads = nbr_graduates_with_diploma,
          ccr_total = nbr_ccr_regular,
          ccr_pct = pct_ccr_no_bonus) %>%
   mutate(year = factor(year, levels = c(20112012, 20122013, 20132014,
-                                           20142015, 20152016),
+                                           20142015, 20152016, 20162017),
                           labels = c("2011-2012", "2012-2013",
                                            "2013-2014", "2014-2015",
-                                           "2015-2016")),
+                                           "2015-2016", "2016-2017")),
          student_group = as.factor(student_group),
          n_grads = char_to_num(n_grads),
          college_ready = char_to_num(college_ready),
@@ -98,6 +107,11 @@ ccr_data <- bind_rows(ccr12_clean, ccr13_clean, ccr14_clean,
          college_ready_pct = college_ready / n_grads,
          career_ready_pct = career_ready / n_grads,
          ccr_pct = as.numeric(ccr_pct) / 100)
+
+# remove old data
+rm(ccr12, ccr13, ccr14, ccr15, ccr16, ccr17,
+   ccr12_clean, ccr13_clean, ccr14_clean, ccr15_clean,
+   ccr16_clean, ccr17_clean)
 
 # select state data
 ccr_state <- select_state(ccr_data)

@@ -3,8 +3,8 @@
 \docType{data}
 \name{rev_exp_dist}
 \alias{rev_exp_dist}
-\title{District Revenue and Expenditure Data for Kentucky Public Schools, 2012-2016}
-\format{A dataframe with 25,143 rows and 7 variables:
+\title{District Revenue and Expenditure Data for Kentucky Public Schools, 2012-2017}
+\format{A dataframe with 30,160 rows and 7 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name}

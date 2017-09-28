@@ -1,8 +1,8 @@
-#' State FRPL Data for Kentucky Public Schools, 2012-2016
+#' State FRPL Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with student FRPL data
 #'
-#' @format A dataframe with 5 rows and 6 variables:
+#' @format A dataframe with 6 rows and 6 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name - in this case, it is always "State Total"}
@@ -15,11 +15,11 @@
 
 "frpl_state"
 
-#' District FRPL Data for Kentucky Public Schools, 2012-2016
+#' District FRPL Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with student FRPL data
 #'
-#' @format A dataframe with 882 rows and 6 variables:
+#' @format A dataframe with 1,059 rows and 6 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -32,11 +32,11 @@
 
 "frpl_dist"
 
-#' School FRPL Data for Kentucky Public Schools, 2012-2016
+#' School FRPL Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with student FRPL data
 #'
-#' @format A dataframe with 7159 rows and 7 variables:
+#' @format A dataframe with 8,594 rows and 7 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}

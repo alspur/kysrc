@@ -3,8 +3,8 @@
 \docType{data}
 \name{ap_sch}
 \alias{ap_sch}
-\title{School AP Data for Kentucky Public Schools, 2013-2016}
-\format{A dataframe with 20,931 rows and 10 variables:
+\title{School AP Data for Kentucky Public Schools, 2013-2017}
+\format{A dataframe with 22,896 rows and 10 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name}

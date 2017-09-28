@@ -3,7 +3,7 @@
 \docType{data}
 \name{grad_sch}
 \alias{grad_sch}
-\title{School 4-Year Cohort Graduation Rate Data for Kentucky Public Schools, 2013-2016}
+\title{School 4-Year Cohort Graduation Rate Data for Kentucky Public Schools, 2013-2017}
 \format{A dataframe with 13680 rows and 6 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}

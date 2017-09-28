@@ -3,8 +3,8 @@
 \docType{data}
 \name{ccr_state}
 \alias{ccr_state}
-\title{State College/Career Readiness Data for Kentucky Public Schools, 2012-2016}
-\format{A dataframe with 85 rows and 11 variables:
+\title{State College/Career Readiness Data for Kentucky Public Schools, 2012-2017}
+\format{A dataframe with 103 rows and 11 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name - in this case, it is always "State Total"}

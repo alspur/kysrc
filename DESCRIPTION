@@ -1,7 +1,7 @@
 Package: kysrc
 Type: Package
-Title: Kentucky School Report Card Data from 2012-2016
-Version: 0.1.2
+Title: Kentucky School Report Card Data from 2012-2017
+Version: 0.1.3
 Author: Alex Spurrier
 Maintainer: Alex Spurrier <alex.spurrier@gmail.com>
 Description: This package contains data from the Kentucky School Report Card

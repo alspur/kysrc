@@ -3,8 +3,8 @@
 \docType{data}
 \name{ach_level_dist}
 \alias{ach_level_dist}
-\title{District KPREP Levels Data for Kentucky Public Schools, 2012-2015}
-\format{A dataframe with 173088 rows and 14 variables:
+\title{District KPREP Levels Data for Kentucky Public Schools, 2012-2017}
+\format{A dataframe with 336,422 rows and 14 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name}

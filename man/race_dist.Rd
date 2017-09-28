@@ -3,8 +3,8 @@
 \docType{data}
 \name{race_dist}
 \alias{race_dist}
-\title{District Student Race Count Data for Kentucky Public Schools, 2012-2016}
-\format{A dataframe with 6146 rows and 6 variables:
+\title{District Student Race Count Data for Kentucky Public Schools, 2012-2017}
+\format{A dataframe with 7,385 rows and 6 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name}

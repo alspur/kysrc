@@ -10,7 +10,8 @@
 # this script is included in .Rbuildignore along with all of
 # the assocaited excel files.
 #
-# data obtained on 2016-07-22 from:
+# 11-12 thru 15-16 data obtained on 2016-10-13 and
+# 16-17 data obtained on 2017-09-28 from:
 # https://applications.education.ky.gov/src/
 
 # load data ####
@@ -32,6 +33,7 @@ act13 <- read_excel("raw_data/data13/ASSESSMENT_ACT.xlsx", sheet = 2)
 act14 <- read_excel("raw_data/data14/ASSESSMENT_ACT.xlsx")
 act15 <- read_excel("raw_data/data15/ASSESSMENT_ACT.xlsx")
 act16 <- read_excel("raw_data/data16/ASSESSMENT_ACT.xlsx")
+act17 <- read_excel("raw_data/data17/ASSESSMENT_ACT.xlsx")
 
 # clean data ####
 
@@ -63,24 +65,25 @@ act13_clean <- clean_act(act13)
 act14_clean <- clean_act(act14)
 act15_clean <- clean_act(act15)
 act16_clean <- clean_act(act16)
+act17_clean <- clean_act(act17)
 
 # bind dfs
 act_data <- bind_rows(act12_clean, act13_clean, act14_clean,
-                      act15_clean, act16_clean)
+                      act15_clean, act16_clean, act17_clean)
 
 # remove old files
 rm(act12, act12_clean, act13, act13_clean, act14, act14_clean,
-   act15, act15_clean, act16, act16_clean)
+   act15, act15_clean, act16, act16_clean, act17, act17_clean)
 
 # format columns
 
 act_data %<>%
   mutate(year = factor(year, levels = c("20112012", "20122013",
                                         "20132014", "20142015",
-                                        "20152016"),
+                                        "20152016", "20162017"),
                        labels = c("2011-2012", "2012-2013",
                                   "2013-2014", "2014-2015",
-                                  "2015-2016")),
+                                  "2015-2016", "2016-2017")),
          student_group = factor(student_group),
          act_n_tested = char_to_num(act_n_tested),
          act_comp_mean = char_to_num(act_comp_mean),

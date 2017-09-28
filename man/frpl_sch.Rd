@@ -3,8 +3,8 @@
 \docType{data}
 \name{frpl_sch}
 \alias{frpl_sch}
-\title{School FRPL Data for Kentucky Public Schools, 2012-2016}
-\format{A dataframe with 7159 rows and 7 variables:
+\title{School FRPL Data for Kentucky Public Schools, 2012-2017}
+\format{A dataframe with 8,594 rows and 7 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name}

@@ -3,8 +3,8 @@
 \docType{data}
 \name{tax_dist}
 \alias{tax_dist}
-\title{District Tax Data for Kentucky Public Schools, 2012-2016}
-\format{A dataframe with 5,202 rows and 5 variables:
+\title{District Tax Data for Kentucky Public Schools, 2012-2017}
+\format{A dataframe with 6,240 rows and 5 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name}

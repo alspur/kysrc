@@ -30,6 +30,7 @@ teach13 <- read_excel("raw_data/data13/LEARNING_ENVIRONMENT_STUDENTS-TEACHERS.xl
 teach14 <- read_excel("raw_data/data14/LEARNING_ENVIRONMENT_STUDENTS-TEACHERS.xlsx", sheet = 1)
 teach15 <- read_excel("raw_data/data15/LEARNING_ENVIRONMENT_STUDENTS-TEACHERS.xlsx", sheet = 1)
 teach16 <- read_excel("raw_data/data16/LEARNING_ENVIRONMENT_STUDENTS-TEACHERS.xlsx", sheet = 1)
+teach17 <- read_excel("raw_data/data17/LEARNING_ENVIRONMENT_STUDENTS-TEACHERS.xlsx", sheet = 2)
 
 # clean data ----------------------
 
@@ -120,19 +121,20 @@ teach13_clean <- teach_clean13(teach13)
 teach14_clean <- teach_clean(teach14)
 teach15_clean <- teach_clean(teach15)
 teach16_clean <- teach_clean(teach16)
+teach17_clean <- teach_clean(teach17)
 
 # join data
-teach_data <- bind_rows(teach16_clean, teach15_clean, teach14_clean,
-                        teach13_clean, teach12_clean)
+teach_data <- bind_rows(teach17_clean, teach16_clean, teach15_clean,
+                        teach14_clean, teach13_clean, teach12_clean)
 
 # tidy data types
 teach <- teach_data %>%
   mutate(year = factor(year, levels = c("20112012", "20122013",
                                         "20132014", "20142015",
-                                        "20152016"),
+                                        "20152016", "20162017"),
                        labels = c("2011-2012", "2012-2013",
                                   "2013-2014", "2014-2015",
-                                  "2015-2016")),
+                                  "2015-2016", "2016-2017")),
          fte_total = char_to_num(fte_total),
          fte_male = char_to_num(fte_male),
          fte_female = char_to_num(fte_female),

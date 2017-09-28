@@ -1,8 +1,8 @@
-#' State KPREP Levels Data for Kentucky Public Schools, 2012-2015
+#' State KPREP Levels Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with KPREP performance level data
 #'
-#' @format A dataframe with 972 rows and 14 variables:
+#' @format A dataframe with 1,904 rows and 14 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name - in this case, it is always "State Total"}
@@ -24,11 +24,11 @@
 
 "ach_level_state"
 
-#' District KPREP Levels Data for Kentucky Public Schools, 2012-2015
+#' District KPREP Levels Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with KPREP performance level data
 #'
-#' @format A dataframe with 173088 rows and 14 variables:
+#' @format A dataframe with 336,422 rows and 14 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -50,11 +50,11 @@
 
 "ach_level_dist"
 
-#' School KPREP Levels Data for Kentucky Public Schools, 2012-2015
+#' School KPREP Levels Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with KPREP performance level data
 #'
-#' @format A dataframe with 517320 rows and 15 variables:
+#' @format A dataframe with 782,005 rows and 15 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}

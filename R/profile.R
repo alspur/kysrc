@@ -1,8 +1,8 @@
-#' State Profile Data for Kentucky Public Schools, 2012-2015
+#' State Profile Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with basic location and enrollment data
 #'
-#' @format A dataframe with 4 rows and 6 variables:
+#' @format A dataframe with 6 rows and 6 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name - in this case, it is always "State Total"}
@@ -15,11 +15,11 @@
 
 "profile_state"
 
-#' District Profile Data for Kentucky Public Schools, 2012-2015
+#' District Profile Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with basic location and enrollment data
 #'
-#' @format A dataframe with 704 rows and 8 variables:
+#' @format A dataframe with 1,058 rows and 7 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -33,11 +33,11 @@
 
 "profile_dist"
 
-#' School Profile Data for Kentucky Public Schools, 2012-2015
+#' School Profile Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with basic location and enrollment data
 #'
-#' @format A dataframe with 5722 rows and 8 variables:
+#' @format A dataframe with 8,595 rows and 10 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{nces_id}{NCES school identification number}

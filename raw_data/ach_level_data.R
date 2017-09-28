@@ -8,7 +8,8 @@
 # this script is included in .Rbuildignore along with all of
 # the assocaited excel files.
 #
-# data obtained on 2016-10-13 from:
+# 11-12 thru 15-16 data obtained on 2016-10-13 and
+# 16-17 data obtained on 2017-09-28 from:
 # https://applications.education.ky.gov/src/
 
 # load data ####
@@ -27,6 +28,7 @@ levels13 <- read_excel("raw_data/data13/ACCOUNTABILITY_ACHIEVEMENT_LEVEL.xlsx", 
 levels14 <- read_excel("raw_data/data14/ACCOUNTABILITY_ACHIEVEMENT_LEVEL.xlsx")
 levels15 <- read_excel("raw_data/data15/ACCOUNTABILITY_ACHIEVEMENT_LEVEL.xlsx")
 levels16 <- read_excel("raw_data/data16/ACCOUNTABILITY_ACHIEVEMENT_LEVEL.xlsx")
+levels17 <- read_excel("raw_data/data17/ACCOUNTABILITY_ACHIEVEMENT_LEVEL.xlsx")
 
 # clean data ####
 
@@ -103,23 +105,38 @@ levels16_clean <- levels16 %>%
          bonus_pct = PCT_BONUS, napd_calc = NAPD_CALCULATION) %>%
   mutate(year = as.character(year))
 
+levels17_clean <- levels17 %>%
+  select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR, CONTENT_LEVEL, CONTENT_TYPE,
+         DISAGG_LABEL, NBR_TESTED, PCT_NOVICE, PCT_APPRENTICE, PCT_PROFICIENT,
+         PCT_DISTINGUISHED, PCT_PROFICIENT_DISTINGUISHED,
+         PCT_BONUS, NAPD_CALCULATION) %>%
+  rename(sch_id = SCH_CD, dist_name = DIST_NAME, sch_name = SCH_NAME,
+         year = SCH_YEAR, school_level = CONTENT_LEVEL, subject = CONTENT_TYPE,
+         student_group = DISAGG_LABEL, n_tested = NBR_TESTED,
+         novice_pct = PCT_NOVICE, apprentice_pct = PCT_APPRENTICE,
+         proficient_pct = PCT_PROFICIENT, distinguished_pct = PCT_DISTINGUISHED,
+         prof_dist_pct = PCT_PROFICIENT_DISTINGUISHED,
+         bonus_pct = PCT_BONUS, napd_calc = NAPD_CALCULATION) %>%
+  mutate(year = as.character(year))
+
 # bind kprep level data from all years into one dataframe
 ach_levels <- bind_rows(levels12_clean, levels13_clean,
                           levels14_clean, levels15_clean,
-                          levels16_clean)
+                          levels16_clean, levels17_clean)
 
 # remove old dataframes
 rm(levels12, levels13, levels14, levels15, levels12_clean, levels13_clean,
-   levels14_clean, levels15_clean, levels16, levels16_clean)
+   levels14_clean, levels15_clean, levels16, levels16_clean, levels17,
+   levels17_clean)
 
 # clean data formatting
 ach_levels %<>%
   mutate(year = factor(year, levels = c("20112012", "20122013",
                                         "20132014", "20142015",
-                                        "20152016"),
+                                        "20152016", "20162017"),
                        labels = c("2011-2012", "2012-2013",
                                   "2013-2014", "2014-2015",
-                                  "2015-2016")),
+                                  "2015-2016", "2016-2017")),
          school_level = factor(school_level, levels = c("Elementary School",
                                                         "Middle School",
                                                         "High School")),

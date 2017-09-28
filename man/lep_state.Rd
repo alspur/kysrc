@@ -3,8 +3,8 @@
 \docType{data}
 \name{lep_state}
 \alias{lep_state}
-\title{Limited English Proficiency Data for Kentucky Public Schools, 2013-2016}
-\format{A dataframe with 60 rows and 6 variables:
+\title{Limited English Proficiency Data for Kentucky Public Schools, 2013-2017}
+\format{A dataframe with 75 rows and 6 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name - in this case, it is always "State"}

@@ -3,8 +3,8 @@
 \docType{data}
 \name{grad_state}
 \alias{grad_state}
-\title{State 4-Year Cohort Graduation Rate Data for Kentucky Public Schools, 2013-2016}
-\format{A dataframe with 60 rows and 5 variables:
+\title{State 4-Year Cohort Graduation Rate Data for Kentucky Public Schools, 2013-2017}
+\format{A dataframe with 75 rows and 5 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name - in this case, it is always "State Total"}

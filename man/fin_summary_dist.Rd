@@ -3,8 +3,8 @@
 \docType{data}
 \name{fin_summary_dist}
 \alias{fin_summary_dist}
-\title{District Financial Summary Data for Kentucky Public Schools, 2012-2016}
-\format{A dataframe with 11,271 rows and 6 variables:
+\title{District Financial Summary Data for Kentucky Public Schools, 2012-2017}
+\format{A dataframe with 13,520 rows and 6 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name}

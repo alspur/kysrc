@@ -3,8 +3,8 @@
 \docType{data}
 \name{profile_sch}
 \alias{profile_sch}
-\title{School Profile Data for Kentucky Public Schools, 2012-2015}
-\format{A dataframe with 5722 rows and 8 variables:
+\title{School Profile Data for Kentucky Public Schools, 2012-2017}
+\format{A dataframe with 8,595 rows and 10 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{nces_id}{NCES school identification number}
