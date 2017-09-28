@@ -8,7 +8,8 @@
 # this script is included in .Rbuildignore along with all of
 # the assocaited excel files.
 #
-# data obtained on 2016-10-13 from:
+# 12-13 thru 15-16 data obtained on 2016-10-13 and
+# 16-17 data obtained on 2017-09-28 from:
 # https://applications.education.ky.gov/src/
 
 # load data ####
@@ -27,12 +28,14 @@ source("raw_data/function_help.R")
 # load data
 grad1315 <- read_excel("raw_data/data15/DELIVERY_TARGET_GRADUATION_RATE_COHORT.xlsx")
 grad16 <- read_excel("raw_data/data16/DELIVERY_TARGET_GRADUATION_RATE_COHORT.xlsx")
+grad17 <- read_excel("raw_data/data17/DELIVERY_TARGET_GRADUATION_RATE_COHORT.xlsx")
 
 # clean data ####
 
 # convert colnames to lowercase
 colnames(grad1315) <- col_lower(grad1315)
 colnames(grad16) <- col_lower(grad16)
+colnames(grad17) <- col_lower(grad17)
 
 # clean df columns
 grad1315_clean <- grad1315 %>%
@@ -50,13 +53,21 @@ grad16_clean <- grad16 %>%
   rename(sch_id = sch_cd, student_group = disagg_label) %>%
   gather(year, grad_rate, -sch_id, -dist_name, -sch_name, -student_group)
 
+grad17_clean <- grad17 %>%
+  filter(cohort_type == "FOUR YEAR") %>%
+  filter(target_label == "Actual Score") %>%
+  select(sch_cd, dist_name, sch_name, disagg_label, reportyear_2017) %>%
+  rename(sch_id = sch_cd, student_group = disagg_label) %>%
+  gather(year, grad_rate, -sch_id, -dist_name, -sch_name, -student_group)
+
 # join data
-grad_data <- bind_rows(grad1315_clean, grad16_clean) %>%
+grad_data <- bind_rows(grad1315_clean, grad16_clean, grad17_clean) %>%
   mutate(year = factor(str_replace_all(str_replace_all(year,
                                                        "reportyear_",""), "cohort_", ""),
-                          levels = c("2013", "2014", "2015", "2016"),
+                          levels = c("2013", "2014", "2015", "2016", "2017"),
                           labels = c("2012-2013", "2013-2014",
-                                     "2014-2015", "2015-2016")),
+                                     "2014-2015", "2015-2016",
+                                     "2016-2017")),
          grad_rate = char_to_num(grad_rate)/100)
 
 # select state data
