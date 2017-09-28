@@ -1,8 +1,8 @@
-#' State Financial Summary Data for Kentucky Public Schools, 2012-2016
+#' State Financial Summary Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with financial summary data
 #'
-#' @format A dataframe with 65 rows and 6 variables:
+#' @format A dataframe with 78 rows and 6 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name - in this case, it is always "State Total"}
@@ -16,11 +16,11 @@
 
 "fin_summary_state"
 
-#' District Financial Summary Data for Kentucky Public Schools, 2012-2016
+#' District Financial Summary Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with financial summary data
 #'
-#' @format A dataframe with 11,271 rows and 6 variables:
+#' @format A dataframe with 13,520 rows and 6 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -34,11 +34,11 @@
 
 "fin_summary_dist"
 
-#' State Tax Data for Kentucky Public Schools, 2012-2016
+#' State Tax Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with tax data
 #'
-#' @format A dataframe with 30 rows and 5 variables:
+#' @format A dataframe with 24 rows and 5 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name - in this case, it is always "State Total"}
@@ -51,11 +51,11 @@
 
 "tax_state"
 
-#' District Tax Data for Kentucky Public Schools, 2012-2016
+#' District Tax Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with tax data
 #'
-#' @format A dataframe with 5,202 rows and 5 variables:
+#' @format A dataframe with 6,240 rows and 5 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -68,11 +68,11 @@
 
 "tax_dist"
 
-#' State Revenue and Expenditure Data for Kentucky Public Schools, 2012-2016
+#' State Revenue and Expenditure Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with revenue and expenditure data
 #'
-#' @format A dataframe with 145 rows and 7 variables:
+#' @format A dataframe with 174 rows and 7 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name - in this case, it is always "State Total"}
@@ -87,11 +87,11 @@
 
 "rev_exp_state"
 
-#' District Revenue and Expenditure Data for Kentucky Public Schools, 2012-2016
+#' District Revenue and Expenditure Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with revenue and expenditure data
 #'
-#' @format A dataframe with 25,143 rows and 7 variables:
+#' @format A dataframe with 30,160 rows and 7 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}
@@ -106,11 +106,11 @@
 
 "rev_exp_dist"
 
-#' State SEEK Data for Kentucky Public Schools, 2012-2016
+#' State SEEK Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with revenue and expenditure data
 #'
-#' @format A dataframe with 40 rows and 5 variables:
+#' @format A dataframe with 48 rows and 5 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name - in this case, it is always "State Total"}
@@ -123,11 +123,11 @@
 
 "seek_state"
 
-#' District SEEK Data for Kentucky Public Schools, 2012-2016
+#' District SEEK Data for Kentucky Public Schools, 2012-2017
 #'
 #' A dataset with revenue and expenditure data
 #'
-#' @format A dataframe with 6,936 rows and 5 variables:
+#' @format A dataframe with 8,320 rows and 5 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{dist_name}{District name}

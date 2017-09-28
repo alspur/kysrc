@@ -17,7 +17,8 @@
 # this script is included in .Rbuildignore along with all of
 # the assocaited excel files.
 #
-# data obtained on 2016-07-22 from:
+# 11-12 thru 15-16 data obtained on 2016-10-13 and
+# 16-17 data obtained on 2017-09-28 from:
 # https://applications.education.ky.gov/src/
 
 # load data ####
@@ -38,6 +39,7 @@ finance13 <- read_excel("raw_data/data14/FINANCE.xlsx", sheet = 2)
 finance14 <- read_excel("raw_data/data14/FINANCE.xlsx", sheet = 3)
 finance15 <- read_excel("raw_data/data15/FINANCE.xlsx")
 finance16 <- read_excel("raw_data/data16/FINANCE.xlsx")
+finance17 <- read_excel("raw_data/data17/FINANCE.xlsx")
 
 # clean data ####
 
@@ -58,23 +60,24 @@ fin13 <- fin_clean(finance13)
 fin14 <- fin_clean(finance14)
 fin15 <- fin_clean(finance15)
 fin16 <- fin_clean(finance16)
+fin17 <- fin_clean(finance17)
 
 # join dfs into one df, rename cols
-finance_data <- bind_rows(fin12, fin13, fin14, fin15, fin16) %>%
+finance_data <- bind_rows(fin12, fin13, fin14, fin15, fin16, fin17) %>%
   rename(sch_id = sch_cd, year = sch_year)
 
 # remove old dfs
-rm(fin12, fin13, fin14, fin15, fin16,
-   finance12, finance13, finance14, finance15, finance16)
+rm(fin12, fin13, fin14, fin15, fin16, fin17,
+   finance12, finance13, finance14, finance15, finance16, finance17)
 
 # convert year to factor
 finance_clean <- finance_data %>%
   mutate(year = factor(year, levels = c("20112012", "20122013",
                                             "20132014", "20142015",
-                                            "20152016"),
+                                            "20152016", "20162017"),
                            labels = c("2011-2012", "2012-2013",
                                       "2013-2014", "2014-2015",
-                                      "2015-2016")))
+                                      "2015-2016", "2016-2017")))
 
 # select df of percentage-based data
 finance_pcts <- finance_clean %>%
