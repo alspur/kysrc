@@ -4,6 +4,5 @@
 ^\.travis\.yml$
 data_quirks.md
 package_stats.R
-cran-comments.md
 ^revdep$
 ^NEWS\.md$
