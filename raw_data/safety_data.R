@@ -198,5 +198,10 @@ discipline_dist <- select_dist(discipline_cnt)
 
 discipline_sch <- select_sch(discipline_cnt)
 
+# create behavior data dfs --------------------
 
-
+behavior_data <- safety_clean %>%
+  filter(!str_detect(report_header,"discipline")) %>%
+  filter(report_header != "legal sanctions") %>%
+  mutate(report_header = str_replace_all(report_header,
+                                         "resolutions", "events"))
