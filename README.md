@@ -36,7 +36,13 @@ The datasets included in this package are:
 - `seek_...`: SEEK funding data (district & state only).
 - `tax_...`: Tax data (district & state only).
 - `teach_...`: Teacher data.
+- `discipline_...`: Discipline data.
+- `legal_...`: Legal event data.
+- `behavior_events...`: Behavior event data.
+- `behavior_context...`: Behavior event data by context.
+- `behavior_location...`: Behavior event data by location.
+- `behavior_ses...`: Behavior event data by student socioeconomic status.
 
 Each dataset includes a unique identifier for the school/district/state, `sch_id`. This variable is helpful for joining data from multiple tables, as is `year`, which indicates the school year during which the data was generated.
 
-There are currently 2,941,990 rows of data in this package and a total of 40,212,592 data points.
+There are currently 7,529,745 rows of data in this package and a total of 79,839,689 data points.

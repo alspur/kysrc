@@ -56,7 +56,25 @@ table_names <- list(acctbly_state,
                     tax_dist,
                     teach_state,
                     teach_dist,
-                    teach_sch
+                    teach_sch,
+                    legal_state,
+                    legal_dist,
+                    legal_sch,
+                    discipline_state,
+                    discipline_dist,
+                    discipline_sch,
+                    behavior_events_state,
+                    behavior_events_dist,
+                    behavior_events_sch,
+                    behavior_context_state,
+                    behavior_context_dist,
+                    behavior_context_sch,
+                    behavior_location_state,
+                    behavior_location_dist,
+                    behavior_location_sch,
+                    behavior_ses_state,
+                    behavior_ses_dist,
+                    behavior_ses_sch
 )
 
 table_names_chr <- c("acctbly_state",
@@ -105,7 +123,25 @@ table_names_chr <- c("acctbly_state",
                      "tax_dist",
                      "teach_state",
                      "teach_dist",
-                     "teach_sch"
+                     "teach_sch",
+                     "legal_state",
+                     "legal_dist",
+                     "legal_sch",
+                     "discipline_state",
+                     "discipline_dist",
+                     "discipline_sch",
+                     "behavior_events_state",
+                     "behavior_events_dist",
+                     "behavior_events_sch",
+                     "behavior_context_state",
+                     "behavior_context_dist",
+                     "behavior_context_sch",
+                     "behavior_location_state",
+                     "behavior_location_dist",
+                     "behavior_location_sch",
+                     "behavior_ses_state",
+                     "behavior_ses_dist",
+                     "behavior_ses_sch"
 )
 
 get_length <- function(df){
@@ -130,3 +166,5 @@ src_data <- tibble(table = table_names_chr,
 src_data_summary <- src_data %>%
   select(-table) %>%
   map_dbl(sum)
+
+src_data_summary

@@ -1,3 +1,7 @@
+## kysrc 0.1.4
+
+- Add school safety data from 2011-2012 to 2016-2017.
+
 ## kysrc 0.1.3
 
 - Add data from the 2016-2017 school year.
