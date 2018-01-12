@@ -371,7 +371,7 @@
 #'
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
-"legal_state"
+"behavior_grade_state"
 
 
 #' State Behavior Data by Grade Level for Kentucky Public Schools, 2014-2017
@@ -392,7 +392,7 @@
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
 
-"legal_dist"
+"behavior_grade_dist"
 
 
 #' State Behavior Data by Grade Level for Kentucky Public Schools, 2014-2017
@@ -413,4 +413,4 @@
 #'
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
-"legal_sch"
+"behavior_grade_sch"

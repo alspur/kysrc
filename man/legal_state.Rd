@@ -3,7 +3,6 @@
 \docType{data}
 \name{legal_state}
 \alias{legal_state}
-\alias{legal_state}
 \title{State Legal Action Data for Kentucky Public Schools, 2012-2017}
 \format{A dataframe with 330 rows and 7 variables:
 \describe{
@@ -17,17 +16,11 @@
 }}
 \source{
 \url{https://applications.education.ky.gov/src/DataSets.aspx}
-
-\url{https://applications.education.ky.gov/src/DataSets.aspx}
 }
 \usage{
 legal_state
-
-legal_state
 }
 \description{
-A dataset with legal action data at the state level
-
 A dataset with legal action data at the state level
 }
 \keyword{datasets}
