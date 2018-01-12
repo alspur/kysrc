@@ -74,7 +74,10 @@ table_names <- list(acctbly_state,
                     behavior_location_sch,
                     behavior_ses_state,
                     behavior_ses_dist,
-                    behavior_ses_sch
+                    behavior_ses_sch,
+                    behavior_grade_state,
+                    behavior_grade_dist,
+                    behavior_grade_sch
 )
 
 table_names_chr <- c("acctbly_state",
@@ -141,7 +144,10 @@ table_names_chr <- c("acctbly_state",
                      "behavior_location_sch",
                      "behavior_ses_state",
                      "behavior_ses_dist",
-                     "behavior_ses_sch"
+                     "behavior_ses_sch",
+                     "behavior_grade_state",
+                     "behavior_grade_dist",
+                     "behavior_grade_sch"
 )
 
 get_length <- function(df){

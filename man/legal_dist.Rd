@@ -3,6 +3,7 @@
 \docType{data}
 \name{legal_dist}
 \alias{legal_dist}
+\alias{legal_dist}
 \title{District Legal Action Data for Kentucky Public Schools, 2012-2017}
 \format{A dataframe with 58,014 rows and 7 variables:
 \describe{
@@ -16,11 +17,17 @@
 }}
 \source{
 \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+\url{https://applications.education.ky.gov/src/DataSets.aspx}
 }
 \usage{
 legal_dist
+
+legal_dist
 }
 \description{
+A dataset with legal action data at the district level
+
 A dataset with legal action data at the district level
 }
 \keyword{datasets}

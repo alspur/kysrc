@@ -352,3 +352,65 @@
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
 
 "legal_sch"
+
+
+#' State Behavior Data by Grade Level for Kentucky Public Schools, 2014-2017
+#'
+#' A dataset with legal action data at the state level
+#'
+#' @format A dataframe with 682 rows and 7 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name - in this case, it is always "State Total"}
+#'   \item{year}{School year}
+#'   \item{grade}{Grade level}
+#'   \item{group_type}{Student group type, either race, gender, or total}
+#'   \item{student_group}{Student group}
+#'   \item{n_students}{Number of students}
+#' }
+#'
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"legal_state"
+
+
+#' State Behavior Data by Grade Level for Kentucky Public Schools, 2014-2017
+#'
+#' A dataset with legal action data at the district level
+#'
+#' @format A dataframe with 112,915 rows and 7 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name}
+#'   \item{year}{School year}
+#'   \item{grade}{Grade level}
+#'   \item{group_type}{Student group type, either race, gender, or total}
+#'   \item{student_group}{Student group}
+#'   \item{n_students}{Number of students}
+#' }
+#'
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+
+"legal_dist"
+
+
+#' State Behavior Data by Grade Level for Kentucky Public Schools, 2014-2017
+#'
+#' A dataset with legal action data at the school level
+#'
+#' @format A dataframe with 456,368 rows and 8 variables:
+#' \describe{
+#'   \item{sch_id}{ID number to identify schools & districts}
+#'   \item{dist_name}{District name}
+#'   \item{sch_name}{School name}
+#'   \item{year}{School year}
+#'   \item{grade}{Grade level}
+#'   \item{group_type}{Student group type, either race, gender, or total}
+#'   \item{student_group}{Student group}
+#'   \item{n_students}{Number of students}
+#' }
+#'
+#' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}
+
+"legal_sch"

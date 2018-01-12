@@ -155,6 +155,20 @@ s_pct_clean <- function(df){
   return(tidy_df)
 }
 
+# create grade level data dfs -----------------
+
+grade_data <- safety_clean %>%
+  filter(report_header == "behavior events by grade level") %>%
+  s_count_clean() %>%
+  select(sch_id, dist_name, sch_name, year, everything()) %>%
+  rename(grade = rpt_line) %>%
+  select(-report_header)
+
+behavior_grade_state <- select_state(grade_data)
+
+behavior_grade_dist <- select_dist(grade_data)
+
+behavior_grade_sch <- select_sch(grade_data)
 
 # create legal data dfs ----------------------
 
@@ -313,3 +327,7 @@ use_data( behavior_context_sch, overwrite = TRUE)
 use_data( behavior_events_state, overwrite = TRUE)
 use_data( behavior_events_dist, overwrite = TRUE)
 use_data( behavior_events_sch, overwrite = TRUE)
+
+use_data( behavior_grade_state, overwrite = TRUE)
+use_data( behavior_grade_dist, overwrite = TRUE)
+use_data( behavior_grade_sch, overwrite = TRUE)

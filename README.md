@@ -19,7 +19,7 @@ This package contains nine different kinds of datasets with data at three differ
 
 The datasets included in this package are:
 
-- `acctbly_...`: Accountabilty system scores and labels.
+- `acctbly_...`: Accountability system scores and labels.
 - `ach_grade_...`: K-PREP test data by grade level (3-8, HS).
 - `ach_level_...`: K-PREP test data by school level (Elementary School, Middle School, High School).
 - `act_...`: ACT test data.
@@ -42,7 +42,8 @@ The datasets included in this package are:
 - `behavior_context...`: Behavior event data by context.
 - `behavior_location...`: Behavior event data by location.
 - `behavior_ses...`: Behavior event data by student socioeconomic status.
+- `behavior_grade...`: Behavior event data by grade level.
 
 Each dataset includes a unique identifier for the school/district/state, `sch_id`. This variable is helpful for joining data from multiple tables, as is `year`, which indicates the school year during which the data was generated.
 
-There are currently 7,529,745 rows of data in this package and a total of 79,839,689 data points.
+There are currently 8,099,710 rows of data in this package and a total of 84,285,812 data points.
