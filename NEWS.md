@@ -1,3 +1,7 @@
+## kysrc 0.1.6
+
+- Add school classification type and lowest/highest grade to `profile_...` data.
+
 ## kysrc 0.1.5
 
 - Add grade level school behavior data.

@@ -34,56 +34,45 @@ profile17 <- read_excel("raw_data/data17/PROFILE.xlsx")
 
 # clean data ####
 
+clean_prof <- function(df, old = FALSE){
+
+  if(old){
+    df %>%
+      select(SCH_CD, NCES_CD, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
+             TITLE1_STATUS, SCH_YEAR, ENROLLMENT, SCH_TYPE,
+             LOW_GRADE, HIGH_GRADE) %>%
+      rename(sch_id = SCH_CD, nces_id = NCES_CD, dist_name = DIST_NAME,
+             sch_name = SCH_NAME, long = LONGITUDE,
+             sch_type = SCH_TYPE,
+             grade_low = LOW_GRADE, grade_high = HIGH_GRADE,
+             title1 = TITLE1_STATUS, enroll = ENROLLMENT,
+             lat = LATITUDE, year = SCH_YEAR) %>%
+      mutate(nces_id = as.character(nces_id))
+  } else {
+
+    df %>%
+      select(SCH_CD, NCESID, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
+             TITLE1_STATUS, SCH_YEAR, MEMBERSHIP, SCH_TYPE,
+             LOW_GRADE, HIGH_GRADE) %>%
+      rename(sch_id = SCH_CD, nces_id = NCESID, dist_name = DIST_NAME,
+             sch_name = SCH_NAME, year = SCH_YEAR,
+             sch_type = SCH_TYPE,
+             grade_low = LOW_GRADE, grade_high = HIGH_GRADE,
+             title1 = TITLE1_STATUS, enroll = MEMBERSHIP,
+             long = LONGITUDE, lat = LATITUDE) %>%
+      mutate(nces_id = as.character(nces_id))
+  }
+
+
+}
+
 # filter out unneeded columns
-prof12 <- profile12 %>%
-  select(SCH_CD, NCES_CD, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
-         TITLE1_STATUS, SCH_YEAR, ENROLLMENT) %>%
-  rename(sch_id = SCH_CD, nces_id = NCES_CD, dist_name = DIST_NAME,
-         sch_name = SCH_NAME, long = LONGITUDE,
-         lat = LATITUDE, year = SCH_YEAR,
-         title1 = TITLE1_STATUS, enroll = ENROLLMENT) %>%
-  mutate(nces_id = as.character(nces_id))
-
-prof13 <- profile13 %>%
-  select(SCH_CD, NCES_CD, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
-         TITLE1_STATUS, SCH_YEAR, ENROLLMENT) %>%
-  rename(sch_id = SCH_CD, nces_id = NCES_CD, dist_name = DIST_NAME,
-         sch_name = SCH_NAME, long = LONGITUDE,
-         lat = LATITUDE, year = SCH_YEAR,
-         title1 = TITLE1_STATUS, enroll = ENROLLMENT) %>%
-  mutate(nces_id = as.character(nces_id))
-
-prof14 <- profile14 %>%
-  select(SCH_CD, NCESID, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
-         TITLE1_STATUS, SCH_YEAR, MEMBERSHIP) %>%
-  rename(sch_id = SCH_CD, nces_id = NCESID, dist_name = DIST_NAME,
-         sch_name = SCH_NAME, long = LONGITUDE,
-         lat = LATITUDE, year = SCH_YEAR,
-         title1 = TITLE1_STATUS, enroll = MEMBERSHIP)
-
-prof15 <- profile15 %>%
-  select(SCH_CD, NCESID, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
-         TITLE1_STATUS, SCH_YEAR, MEMBERSHIP) %>%
-  rename(sch_id = SCH_CD, nces_id = NCESID, dist_name = DIST_NAME,
-         sch_name = SCH_NAME, long = LONGITUDE,
-         lat = LATITUDE, year = SCH_YEAR,
-         title1 = TITLE1_STATUS, enroll = MEMBERSHIP)
-
-prof16 <- profile16 %>%
-  select(SCH_CD, NCESID, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
-         TITLE1_STATUS, SCH_YEAR, MEMBERSHIP) %>%
-  rename(sch_id = SCH_CD, nces_id = NCESID, dist_name = DIST_NAME,
-         sch_name = SCH_NAME, long = LONGITUDE,
-         lat = LATITUDE, year = SCH_YEAR,
-         title1 = TITLE1_STATUS, enroll = MEMBERSHIP)
-
-prof17 <- profile17 %>%
-  select(SCH_CD, NCESID, DIST_NAME, SCH_NAME, LONGITUDE, LATITUDE,
-         TITLE1_STATUS, SCH_YEAR, MEMBERSHIP) %>%
-  rename(sch_id = SCH_CD, nces_id = NCESID, dist_name = DIST_NAME,
-         sch_name = SCH_NAME, long = LONGITUDE,
-         lat = LATITUDE, year = SCH_YEAR,
-         title1 = TITLE1_STATUS, enroll = MEMBERSHIP)
+prof12 <- clean_prof(profile12, old = TRUE)
+prof13 <- clean_prof(profile13, old = TRUE)
+prof14 <- clean_prof(profile14)
+prof15 <- clean_prof(profile15)
+prof16 <- clean_prof(profile16)
+prof17 <- clean_prof(profile17)
 
 # bind profile data from all years into one dataframe
 prof_data <- bind_rows(prof12, prof13, prof14, prof15, prof16, prof17)
@@ -98,6 +87,20 @@ colnames(coop_info) <- tolower(colnames(coop_info))
 # remove old dataframes
 rm(profile12, profile13, profile14, profile15, profile16, profile17,
    prof12, prof13, prof14, prof15, prof16, prof17)
+
+grade_cleanr <- function(x){
+
+  clean_grade <- x %>%
+    str_replace_all("th", "") %>%
+    str_replace_all("st", "") %>%
+    str_replace_all("nd", "") %>%
+    str_replace_all("rd", "")
+
+  factor(clean_grade, levels = c("Preschool", "Entry", "Primary",
+                                 "K", 1:12, "Adult Ed"))
+
+}
+
 
 # clean data formatting
 prof_data_clean <- prof_data %>%
@@ -117,19 +120,23 @@ prof_data_clean <- prof_data %>%
   mutate(title1 = factor(type, levels = c("Title 1",
                                           "Title 1 eligible, no program",
                                           "Not Title 1 eligible"))) %>%
-  select(-type)
+  select(-type) %>%
+  mutate(grade_low = grade_cleanr(grade_low),
+         grade_high = grade_cleanr(grade_high))
 
 prof_data_coop <- prof_data_clean %>%
   left_join(coop_info) %>%
   select(sch_id, nces_id, dist_name, sch_name,
-         coop, long, lat, year, title1, enroll) %>%
+         coop, long, lat, year, sch_type,
+         grade_low, grade_high, title1, enroll) %>%
   mutate(coop = as.factor(coop))
 
 # select state profile data
 profile_state <- prof_data_coop %>%
   filter(sch_id == 999) %>% # filter for state id number
   mutate(dist_name = "State Total") %>% # clean labels
-  select(-sch_name, -coop, -title1, -nces_id) # remove redundant columns
+  select(-sch_name, -coop, -title1, -nces_id,
+         -grade_low, -grade_high, -sch_type) # remove redundant columns
 
 # select district profile data
 profile_dist <- prof_data_coop %>%
@@ -142,7 +149,8 @@ profile_dist <- prof_data_coop %>%
   mutate(long = min(long, na.rm = TRUE), # impute lat and long for
          lat = min(lat, na.rm = TRUE)) %>% # years w/ missing data
   ungroup() %>%
-  select(-title1, -nces_id)
+  select(-title1, -nces_id,
+         -grade_low, -grade_high, -sch_type)
 
 
 # select school profile data

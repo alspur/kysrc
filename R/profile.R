@@ -37,7 +37,7 @@
 #'
 #' A dataset with basic location and enrollment data
 #'
-#' @format A dataframe with 8,595 rows and 10 variables:
+#' @format A dataframe with 8,595 rows and 13 variables:
 #' \describe{
 #'   \item{sch_id}{ID number to identify schools & districts}
 #'   \item{nces_id}{NCES school identification number}
@@ -47,6 +47,9 @@
 #'   \item{long}{Longitude}
 #'   \item{lat}{Latitude}
 #'   \item{year}{School year}
+#'   \item{sch_type}{School type classification: A1, A2, A4, A4, A5, A6, B1, C2, D1}
+#'   \item{grade_low}{Lowest grade served}
+#'   \item{grade_high}{Highest grade served}
 #'   \item{title1}{School's Title 1 status}
 #'   \item{enroll}{Number of students enrolled on October 1 of that school year}
 #' }
