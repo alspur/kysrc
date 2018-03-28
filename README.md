@@ -46,4 +46,4 @@ The datasets included in this package are:
 
 Each dataset includes a unique identifier for the school/district/state, `sch_id`. This variable is helpful for joining data from multiple tables, as is `year`, which indicates the school year during which the data was generated.
 
-There are currently 8,099,710 rows of data in this package and a total of 84,311,597 data points.
+There are currently 8,136,166 rows of data in this package and a total of 84,562,565 data points.

@@ -3,8 +3,8 @@
 \docType{data}
 \name{iep_dist}
 \alias{iep_dist}
-\title{IEP Data for Kentucky Public Schools, 2012-2015}
-\format{A dataframe with 16,824 rows and 6 variables:
+\title{IEP Data for Kentucky Public Schools, 2012-2017}
+\format{A dataframe with 21,024 rows and 6 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name}

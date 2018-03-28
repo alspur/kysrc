@@ -4,8 +4,8 @@
 \name{iep_state}
 \alias{iep_state}
 \alias{iep_state}
-\title{IEP Data for Kentucky Public Schools, 2012-2015}
-\format{A dataframe with 96 rows and 6 variables:
+\title{IEP Data for Kentucky Public Schools, 2012-2017}
+\format{A dataframe with 120 rows and 6 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name - always "State Total"}
