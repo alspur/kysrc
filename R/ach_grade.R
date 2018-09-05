@@ -71,6 +71,7 @@
 #'   \item{prof_dist_pct}{Percent of students scoring "Proficient" or "Distinguished" on KPREP}
 #'   \item{bonus_pct}{Percent difference between "Distinguished" and "Novice" if the "Novice" rate is lower.}
 #'   \item{napd_calc}{Aggregation of score granting .5 points per student at "Apprentice", 1 point per student at/above "Proficient" and .5 points for the value of the "Bonus" amount.}
+#'   \item{perf_index}{Aggregation of performance levels, granting weights of 0 to percent "Novice", .5 to percent "Apprentice", 1 to percent "Proficient", and 1.25 to percent "Distinguished".}
 #' }
 #'
 #' @source \url{https://applications.education.ky.gov/src/DataSets.aspx}

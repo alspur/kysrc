@@ -30,6 +30,8 @@ levels15 <- read_excel("raw_data/data15/ACCOUNTABILITY_ACHIEVEMENT_LEVEL.xlsx")
 levels16 <- read_excel("raw_data/data16/ACCOUNTABILITY_ACHIEVEMENT_LEVEL.xlsx")
 levels17 <- read_excel("raw_data/data17/ACCOUNTABILITY_ACHIEVEMENT_LEVEL.xlsx")
 
+source("raw_data/function_help.R")
+
 # clean data ####
 
 # create function to convert chars to nums, handling "," in 1000+ numbers
@@ -149,23 +151,18 @@ ach_levels %<>%
          distinguished_pct = as.numeric(distinguished_pct) / 100,
          prof_dist_pct = as.numeric(prof_dist_pct) / 100,
          bonus_pct = as.numeric(bonus_pct) / 100,
-         napd_calc = as.numeric(napd_calc) / 100)
+         napd_calc = as.numeric(napd_calc) / 100,
+         perf_index = (apprentice_pct * .5) + proficient_pct +
+           (distinguished_pct * 1.25))
 
 # select state data
-ach_level_state <-ach_levels %>%
-  filter(sch_id == 999) %>% # filter for state id number
-  select(-sch_name) # remove redundant column - all values are "State Total"
-
+ach_level_state <- select_state(ach_levels)
 
 # select district data
-ach_level_dist <- ach_levels %>%
-  filter(sch_id != 999) %>% # exclude state id number
-  filter(str_length(sch_id) == 3) %>% # only include id numbers w/ 3 chars
-  select(-sch_name) # remove redundant col - all values are "District Total"
+ach_level_dist <- select_dist(ach_levels)
 
 # select school data
-ach_level_sch <- ach_levels %>%
-  filter(str_length(sch_id) == 6) # only include id numbers w/ 6 chars
+ach_level_sch <- select_sch(ach_levels)
 
 # use data for package ####
 use_data(ach_level_sch, overwrite = TRUE)

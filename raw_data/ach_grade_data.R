@@ -113,7 +113,9 @@ ach_grade <- bind_rows(grade12_clean, grade13_clean,
          distinguished_pct = as.numeric(distinguished_pct) / 100,
          prof_dist_pct = as.numeric(prof_dist_pct) / 100,
          bonus_pct = as.numeric(bonus_pct) / 100,
-         napd_calc = as.numeric(napd_calc) / 100)
+         napd_calc = as.numeric(napd_calc) / 100,
+         perf_index = (apprentice_pct * .5) + proficient_pct +
+           (distinguished_pct * 1.25))
 
 # remove old dataframes
 rm(grade12, grade13, grade14, grade15, grade12_clean, grade13_clean,
