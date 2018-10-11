@@ -3,8 +3,8 @@
 \docType{data}
 \name{ach_level_state}
 \alias{ach_level_state}
-\title{State KPREP Levels Data for Kentucky Public Schools, 2012-2017}
-\format{A dataframe with 1,904 rows and 14 variables:
+\title{State KPREP Levels Data for Kentucky Public Schools, 2012-2018}
+\format{A dataframe with 2,212 rows and 15 variables:
 \describe{
   \item{sch_id}{ID number to identify schools & districts}
   \item{dist_name}{District name - in this case, it is always "State Total"}
@@ -20,6 +20,7 @@
   \item{prof_dist_pct}{Percent of students scoring "Proficient" or "Distinguished" on KPREP}
   \item{bonus_pct}{Percent difference between "Distinguished" and "Novice" if the "Novice" rate is lower.}
   \item{napd_calc}{Aggregation of score granting .5 points per student at "Apprentice", 1 point per student at/above "Proficient" and .5 points for the value of the "Bonus" amount.}
+  \item{perf_index}{Aggregation of score granting .5 points per student at "Apprentice", 1 point per student at "Proficient", and 1.25 points per student at "Distinguished"}
 }}
 \source{
 \url{https://applications.education.ky.gov/src/DataSets.aspx}

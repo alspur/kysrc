@@ -29,6 +29,7 @@ levels14 <- read_excel("raw_data/data14/ACCOUNTABILITY_ACHIEVEMENT_LEVEL.xlsx")
 levels15 <- read_excel("raw_data/data15/ACCOUNTABILITY_ACHIEVEMENT_LEVEL.xlsx")
 levels16 <- read_excel("raw_data/data16/ACCOUNTABILITY_ACHIEVEMENT_LEVEL.xlsx")
 levels17 <- read_excel("raw_data/data17/ACCOUNTABILITY_ACHIEVEMENT_LEVEL.xlsx")
+levels18 <- read_excel("raw_data/data18/Accountable NAPD_20180926.xlsx")
 
 source("raw_data/function_help.R")
 
@@ -52,7 +53,10 @@ levels12_clean <- levels12 %>%
          novice_pct = PCT_NOVICE, apprentice_pct = PCT_APPRENTICE,
          proficient_pct = PCT_PROFICIENT, distinguished_pct = PCT_DISTINGUISHED,
          prof_dist_pct = PCT_PROFICIENT_DISTINGUISHED,
-         bonus_pct = PCT_BONUS, napd_calc = NAPD_CALCULATION)
+         bonus_pct = PCT_BONUS, napd_calc = NAPD_CALCULATION) %>%
+  mutate(student_group = str_replace_all(student_group,
+                                         "Limited English Proficiency",
+                                         "English Learners"))
 
 levels13_clean <- levels13 %>%
   select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR, CONTENT_LEVEL, CONTENT_TYPE,
@@ -65,7 +69,10 @@ levels13_clean <- levels13 %>%
          novice_pct = PCT_NOVICE, apprentice_pct = PCT_APPRENTICE,
          proficient_pct = PCT_PROFICIENT, distinguished_pct = PCT_DISTINGUISHED,
          prof_dist_pct = PCT_PROFICIENT_DISTINGUISHED,
-         bonus_pct = PCT_BONUS, napd_calc = NAPD_CALCULATION)
+         bonus_pct = PCT_BONUS, napd_calc = NAPD_CALCULATION) %>%
+  mutate(student_group = str_replace_all(student_group,
+                                         "Limited English Proficiency",
+                                         "English Learners"))
 
 levels14_clean <- levels14 %>%
   select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR, CONTENT_LEVEL, CONTENT_TYPE,
@@ -78,7 +85,10 @@ levels14_clean <- levels14 %>%
          novice_pct = PCT_NOVICE, apprentice_pct = PCT_APPRENTICE,
          proficient_pct = PCT_PROFICIENT, distinguished_pct = PCT_DISTINGUISHED,
          prof_dist_pct = PCT_PROFICIENT_DISTINGUISHED,
-         bonus_pct = PCT_BONUS, napd_calc = NAPD_CALCULATION)
+         bonus_pct = PCT_BONUS, napd_calc = NAPD_CALCULATION) %>%
+  mutate(student_group = str_replace_all(student_group,
+                                         "Limited English Proficiency",
+                                         "English Learners"))
 
 levels15_clean <- levels15 %>%
   select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR, CONTENT_LEVEL, CONTENT_TYPE,
@@ -91,7 +101,10 @@ levels15_clean <- levels15 %>%
          novice_pct = PCT_NOVICE, apprentice_pct = PCT_APPRENTICE,
          proficient_pct = PCT_PROFICIENT, distinguished_pct = PCT_DISTINGUISHED,
          prof_dist_pct = PCT_PROFICIENT_DISTINGUISHED,
-         bonus_pct = PCT_BONUS, napd_calc = NAPD_CALCULATION)
+         bonus_pct = PCT_BONUS, napd_calc = NAPD_CALCULATION) %>%
+  mutate(student_group = str_replace_all(student_group,
+                                         "Limited English Proficiency",
+                                         "English Learners"))
 
 levels16_clean <- levels16 %>%
   select(SCH_CD, DIST_NAME, SCH_NAME, SCH_YEAR, CONTENT_LEVEL, CONTENT_TYPE,
@@ -121,24 +134,64 @@ levels17_clean <- levels17 %>%
          bonus_pct = PCT_BONUS, napd_calc = NAPD_CALCULATION) %>%
   mutate(year = as.character(year))
 
+levels18_clean <- levels18 %>%
+  rename(sch_id =`Accountable School Code`, dist_name = `District Name`,
+         sch_name = `School Name`, school_level = Level, subject = Subject,
+         student_group = `Demographic Group`, n_tested = `Tested`,
+         novice_pct = `Novice %`, apprentice_pct = `Apprentice %`,
+         proficient_pct = `Proficient %`, distinguished_pct = `Distinguished %`,
+         prof_dist_pct = `Proficient/ Distinguished %`) %>%
+  select(-Type, -Enrollment, -Suppression, -`Participation Rate`) %>%
+  mutate(bonus_pct = NA, napd_calc = NA, year = "2017-2018",
+         school_level = str_replace_all(school_level, "ES", "Elementary School"),
+         school_level = str_replace_all(school_level, "MS", "Middle School"),
+         school_level= str_replace_all(school_level, "HS", "High School"),
+         subject = str_replace_all(subject, "RD", "Reading"),
+         subject = str_replace_all(subject, "MA", "Mathematics"),
+         subject = str_replace_all(subject, "SC", "Science"),
+         subject = str_replace_all(subject, "SS", "Social Studies"),
+         subject = str_replace_all(subject, "WR", "Writing"),
+         student_group = str_replace_all(student_group,
+                                         "Consolidated Student Group",
+                                         "Gap Group (non-duplicated)"),
+         student_group = str_replace_all(student_group,
+                                         "English Learner \\(EL\\)",
+                                         "English Learners"),
+         student_group = str_replace_all(student_group,
+                                         "White",
+                                         "White (Non-Hispanic)"),
+         student_group = str_replace_all(student_group,
+                                         "Disability-With IEP Alt Only",
+                                         "Disability-Alternate Only"),
+         student_group = str_replace_all(student_group,
+                                         "Disability-With IEP \\(No Alt\\)",
+                                         "Disability-With IEP (not including Alternate)"),
+         student_group = str_replace_all(student_group,
+                                         "Disability \\(no ALT\\) with Accomodation",
+                                         "Disability-With Accommodation (not including Alternate)")) %>%
+  select(sch_id, dist_name, sch_name, year, everything())
+
 # bind kprep level data from all years into one dataframe
 ach_levels <- bind_rows(levels12_clean, levels13_clean,
-                          levels14_clean, levels15_clean,
-                          levels16_clean, levels17_clean)
+                        levels14_clean, levels15_clean,
+                        levels16_clean, levels17_clean,
+                        levels18_clean)
 
 # remove old dataframes
 rm(levels12, levels13, levels14, levels15, levels12_clean, levels13_clean,
    levels14_clean, levels15_clean, levels16, levels16_clean, levels17,
-   levels17_clean)
+   levels17_clean, levels18, levels18_clean)
 
 # clean data formatting
 ach_levels %<>%
   mutate(year = factor(year, levels = c("20112012", "20122013",
                                         "20132014", "20142015",
-                                        "20152016", "20162017"),
+                                        "20152016", "20162017",
+                                        "2017-2018"),
                        labels = c("2011-2012", "2012-2013",
                                   "2013-2014", "2014-2015",
-                                  "2015-2016", "2016-2017")),
+                                  "2015-2016", "2016-2017",
+                                  "2017-2018")),
          school_level = factor(school_level, levels = c("Elementary School",
                                                         "Middle School",
                                                         "High School")),

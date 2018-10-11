@@ -3,7 +3,6 @@
 \docType{data}
 \name{iep_state}
 \alias{iep_state}
-\alias{iep_state}
 \title{IEP Data for Kentucky Public Schools, 2012-2017}
 \format{A dataframe with 120 rows and 6 variables:
 \describe{

@@ -3,7 +3,6 @@
 \docType{data}
 \name{lep_sch}
 \alias{lep_sch}
-\alias{lep_sch}
 \title{Limited English Proficiency Data for Kentucky Public Schools, 2013-2017}
 \format{A dataframe with 72,720 rows and 7 variables:
 \describe{
