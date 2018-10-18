@@ -2,6 +2,7 @@
 
 - Add `perf_index` to `ach_grade_...` and `ach_level_...`. 
 - Add 2017-2018 data to `ach_level_...`.
+- Add 2017-2018 accountabiltiy data as `acctbly_essa_...`.
 
 ## kysrc 0.1.7
 

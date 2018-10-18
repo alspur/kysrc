@@ -19,7 +19,8 @@ This package contains nine different kinds of datasets with data at three differ
 
 The datasets included in this package are:
 
-- `acctbly_...`: Accountability system scores and labels.
+- `acctbly_...`: Accountability system scores and labels (until the 2015-2016 school year).
+- `acctbly_essa_...`: Accountablity system scores and labels *after* ESSA reauthorization (first year = 2017-18).
 - `ach_grade_...`: K-PREP test data by grade level (3-8, HS).
 - `ach_level_...`: K-PREP test data by school level (Elementary School, Middle School, High School).
 - `act_...`: ACT test data.
