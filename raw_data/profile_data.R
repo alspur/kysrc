@@ -158,10 +158,6 @@ profile_sch <- prof_data_coop %>%
   filter(str_length(sch_id) == 6) %>% # only include id numbers w/ 6 chars
   mutate(long = ifelse(long < 100, long, NA),
          lat = ifelse(lat < 100, lat, NA)) %>%
-  group_by(sch_id) %>%
-  mutate(long = min(long, na.rm = TRUE), # impute lat and long for
-         lat = min(lat, na.rm = TRUE)) %>% # years w/ missing data
-  ungroup() %>%
   mutate(lat = ifelse(sch_name == "Bullitt County Area Technology Center",
                        38, lat)) %>%
   arrange(sch_id)

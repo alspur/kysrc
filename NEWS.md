@@ -1,3 +1,7 @@
+## kysrc 0.1.9
+
+- Remove imputation of latitude and longitude for missing years in `profile_sch`
+
 ## kysrc 0.1.8
 
 - Add `perf_index` to `ach_grade_...` and `ach_level_...`. 
